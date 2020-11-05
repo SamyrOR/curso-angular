@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Angular!!</title>
+  </head>
+  <body>
+    <section>
+      <h1>Angular</h1>
+      <p>Framerwork front-end desenvolvido entre Google e Microsoft</p>
+    </section>
+    <section>
+      <h1>Web Components</h1>
+      <p>
+        O angular funciona com angular components, que nada menos nada mais são
+        components HTML, desenvolvidos em partes separadas e organizadas em
+        conjuntos para exibição na página
+      </p>
+      <p>Um só componente pode conter outros components etc</p>
+      <p>
+        Por convenção, para criação de components, devemos cirar a pasta do
+        component,e o arquivo .component.ts, que é o TS do nosso component.
+      </p>
+      <p><strong> meu-primeiro.component.ts</strong></p>
+      <p>
+        Dentre deste arquivo . component, vamos importar o Component do angular
+        ' <strong> import { Component } from '@angular/core '</strong>
+      </p>
+      <p>
+        Logo em seguida usamos o decorator do component e passamos como
+        parametros o seletor, o template em caso de template inline, o
+        templateUrl em caso de arquivo HTML, e o styleUrl em caso de arquivo
+        css. ficando
+      </p>
+      <p>
+        <strong> @Component</strong>({ selector: 'meu-primeiro-component',
+        template: ` código html`, styleUrl: ['./pasta/do/arquivo.css]'})
+      </p>
+      <p>
+        E logo em seguida, como se trata de um decorator devemos informar a
+        classe
+      </p>
+      <p>export class MeuPrimeiroComponent{ código da classe}</p>
+      <p>
+        Após isto, para utilizarmos na página principal da nossa aplicação,
+        devemos importar o nosso component, no arquivo '
+        <strong> app.module.ts</strong> ', após importa-lo, devemos declara-lo
+        no decorator <b> @NgModule </b>no array da chave ' declarations:
+        [AppComponent, MeuPrimeiroComponent],
+      </p>
+      <p>
+        Então sim, podemos adicionar a tag informada em selector do nosso
+        component no arquivo html principal da nossa aplicação o '
+        app.component.html '
+      </p>
+      <p>
+        Tambem podemos e devemos utilizar o CLI para criação do component de
+        forma dinamica, basta digitar no terminal '<b>
+          ng g c nome-do-component</b
+        >', que o próprio angular se encarrega de gerar os arquivos e o import
+        no @NgModule do nosso app.module.ts
+      </p>
+      <p>
+        <a href="https://angular.io/api/core/Component"
+          >Documentação do components</a
+        >
+      </p>
+      <p><strong> Introdução: Hello, world! - Aula 3</strong></p>
+    </section>
+    <hr />
+    <section></section>
+  </body>
+</html>

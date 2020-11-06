@@ -20,12 +20,15 @@
       <p>Um só componente pode conter outros components etc</p>
       <p>
         Por convenção, para criação de components, devemos cirar a pasta do
-        component,e o arquivo .component.ts, que é o TS do nosso component.
+        component,e o arquivo .component.ts, que é o TS do nosso component. E o
+        component, deve unica e exclusivamente conter código de iteração com o
+        template, código de iteração com bancos de dados e apis devem ser
+        criados em serviçes
       </p>
-      <p><strong> meu-primeiro.component.ts</strong></p>
+      <p><b> meu-primeiro.component.ts</b></p>
       <p>
         Dentre deste arquivo . component, vamos importar o Component do angular
-        ' <strong> import { Component } from '@angular/core '</strong>
+        ' <b> import { Component } from '@angular/core '</b>
       </p>
       <p>
         Logo em seguida usamos o decorator do component e passamos como
@@ -34,8 +37,8 @@
         css. ficando
       </p>
       <p>
-        <strong> @Component</strong>({ selector: 'meu-primeiro-component',
-        template: ` código html`, styleUrl: ['./pasta/do/arquivo.css]'})
+        <b> @Component</b>({ selector: 'meu-primeiro-component', template: `
+        código html`, styleUrl: ['./pasta/do/arquivo.css]'})
       </p>
       <p>
         E logo em seguida, como se trata de um decorator devemos informar a
@@ -45,8 +48,8 @@
       <p>
         Após isto, para utilizarmos na página principal da nossa aplicação,
         devemos importar o nosso component, no arquivo '
-        <strong> app.module.ts</strong> ', após importa-lo, devemos declara-lo
-        no decorator <b> @NgModule </b>no array da chave ' declarations:
+        <b> app.module.ts</b> ', após importa-lo, devemos declara-lo no
+        decorator <b> @NgModule </b>no array da chave ' declarations:
         [AppComponent, MeuPrimeiroComponent],
       </p>
       <p>
@@ -69,6 +72,93 @@
       <p><strong> Introdução: Hello, world! - Aula 3</strong></p>
     </section>
     <hr />
-    <section></section>
+    <section>
+      <h1>Modules</h1>
+      <p>Outra poderosíssima ferramenta do angular, e o seu modo de produção</p>
+      <p>
+        Com modulos, podemos separar partes do código, como um modulo só para
+        login, outro apenas para produtos, etc.
+      </p>
+      <p>
+        Evitando assim congestionar o modulo principal da nossa aplicação o
+        <b>AppModule</b>, dentro do modulo principal, temos o
+        <b>bootstrap:</b> importado apenas nele, que significa qual a modulo
+        principal irá puxar toda a aplicação, tambem o <b>BrowserModule</b>, do
+        qual prepara a aplicação para ser rodada em um browser, há tambem o
+        <b>FormsModule</b>, utilizado em formulários, e o <b>HttpModule</b> que
+        permite utilizarmos as diretivas https, para requisição ajax. Todos
+        estes itens estão dentro do decorator <b>@NgModule</b>, há tambem a
+        chave do <b>providers</b>, que é responsável pelos serviços que
+        desejamos importat.
+      </p>
+      <p>
+        Podemos criar um module com o comando <b> ng c m nome-do-module </b> via
+        cli, irá criar a pasta com o nome do module e o .module.ts, este module
+        tambem está acompanhado do decorator <b>@NgModule</b>, ao ser criado
+        pelo cli tambem ja irá ser importado nos imports do modulo principal,
+        dentro dos nossos features modules, que são os módulos de
+        funcionalidades, podemos ter vários components sendo importado nesses
+        módulos e tambem exportados na chave do exports, ao ser exportado o
+        component dentro do feature module poderá ser utilizado no template que
+        está sendo importado o nosso module.
+      </p>
+
+      <p>
+        Após criar o nosso module, o component do module e tambem exportar o
+        component do module, podemos criar outros components filhos, que podem
+        ser utilizados no component do module, porem nao em outros components,
+        criando assim components de forma privada.
+      </p>
+      <h2>Module principal</h2>
+      <p>@NgModule ({</p>
+      <p>declarations: [declaração dos components aqui]</p>
+      <p>imports: [declaração de outros modules aqui]</p>
+      <p>providers: [declaração dos services aqui]</p>
+      <p>bootstrap: [component principal da aplicação]</p>
+      <h2>Feature module</h2>
+      <p>@NgModule ({</p>
+      <p>imports: [declaração de outros modules aqui]</p>
+      <p>declarations: [declaração dos components aqui]</p>
+      <p>exports: [export do component principal]</p>
+      <p><strong> Introdução: Módulos (ngModule) - Aula 5</strong></p>
+    </section>
+    <hr />
+    <section>
+      <h1>Template</h1>
+      <p>
+        O template é o código HTML do nosso component, pode ser escrito inline
+        na chave <b>template:`código html`</b> mas por convenção deve ser
+        utilizado assim apenas em casos em que o template tenha no máximo até 3
+        linhas
+      </p>
+      <p>
+        Caso ultrapasse isso deve ser utilizado a chave
+        <b>templateUrl:[./caminho/do/html.html]</b>
+      </p>
+      <p>
+        No nosso template, podemos referenciar variáveis com
+        <b>interpolação {{variável}</b>, a variável deve ser declarada dentro da
+        nossa classe do component com type anotation
+      </p>
+      <p>Tambem podemos usar diretivas como ngFor, ngIf como em ejs</p>
+      <p><b> Introdução: Template - Aula 6</b></p>
+    </section>
+    <hr />
+    <section>
+      <h1>Serviços (Services) e Injeção de dependência (DI)</h1>
+      <p>
+        Os serviços, contem todo o código que procura e recebe informações
+        externas a aplicação, como em bancos de dados e apis
+      </p>
+      <p>
+        É um classe simples com o decorator <b>@Injectable()</b>, que permite
+        que o serviços seja utilizado em injeção de dependência.
+      </p>
+      <p>
+        Dentro da classe teremos métodos normais como em uma classe com a lógica
+        do código, e para utilizar como DI, devemos declarar no constructor da
+        classe e que desejamos receber o service, geralmente como private.
+      </p>
+    </section>
   </body>
 </html>

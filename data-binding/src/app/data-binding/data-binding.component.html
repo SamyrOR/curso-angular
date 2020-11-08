@@ -1,0 +1,135 @@
+<section class="property-binding">
+  <article>
+    <h3>Interpolation / Interpolação</h3>
+    <p>String renderizada com interpolação: {{ url }}</p>
+    <p>
+      Resultado de 1 + 1 é: {{ 1 + 1 }} (interpolation com a lógica dentro das
+      chaves, como em template string.
+    </p>
+    <p>Resultado de 1 + 1 não é : {{ 1 + 1 + getValor() }}</p>
+    <p>
+      Curso de Angular e gosto do curso: {{ cursoAngular && getCurtiCurso() }}
+    </p>
+  </article>
+  <article>
+    <h3>Property Binding</h3>
+    <img [src]="urlImage" />
+  </article>
+</section>
+<hr />
+<section>
+  <article>
+    <h3>Class e Style Binding</h3>
+    <div>
+      Selecione uma classe:
+      <select #classe (change)="(0)" name="" id="">
+        <option value="alert-success">Sucesso</option>
+        <option value="alert-info">Info</option>
+        <option value="alert-warning">Alerta</option>
+        <option value="alert-danger">Erro</option>
+      </select>
+    </div>
+    <div class="alert {{ classe.value }}" role="alert">
+      Este texto será alterado de acordo com o valor do combobox
+    </div>
+    <div
+      class="alert"
+      [class.alert-success]="classe.value == 'alert-success'"
+      role="alert"
+    >
+      A simple success alert—check it out!
+    </div>
+    <div
+      class="alert"
+      [class.alert-danger]="classe.value == 'alert-danger'"
+      role="alert"
+    >
+      A simple danger alert—check it out!
+    </div>
+    <div
+      class="alert"
+      [class.alert-warning]="classe.value == 'alert-warning'"
+      role="alert"
+    >
+      A simple warning alert—check it out!
+    </div>
+    <div
+      class="alert"
+      [class.alert-info]="classe.value == 'alert-info'"
+      role="alert"
+    >
+      A simple info alert—check it out!
+    </div>
+    <div
+      class="alert alert-danger"
+      role="alert"
+      [style.display]="classe.value == 'alert-danger' ? 'block' : 'none'"
+    >
+      Esse texto somente aparece em caso de erro
+    </div>
+  </article>
+</section>
+<hr />
+<section>
+  <article>
+    <h3>Event binding</h3>
+    <div>
+      <button (click)="botaoClicado()" class="btn btn-primary ml-2">
+        Me clique!
+      </button>
+      <p>
+        <input
+          class="m-2"
+          #campoInput
+          (keyup)="onKeyUp($event)"
+          (keyup.enter)="salvarValor($event.target.value)"
+          (blur)="salvarValor(campoInput.value)"
+          type="text"
+        />
+      </p>
+      <p>Este é o valor atual: {{ valorAtual }}</p>
+      <p>Este é o último valor salvo: {{ valorSalvo }}</p>
+      <p
+        (mouseover)="onMouseOverOut()"
+        (mouseout)="onMouseOverOut()"
+        [class.highlight]="isMouseOver"
+      >
+        Passe o mouse sobre mim
+      </p>
+    </div>
+  </article>
+</section>
+<hr />
+<section class="two-way-binding">
+  <article>
+    <h3>Two-way data binding</h3>
+    <div>
+      <input
+        class="m-2"
+        type="text"
+        [value]="nome"
+        (input)="nome = $event.target.value"
+      />
+      <input class="m-2" type="text" [(ngModel)]="nome" />
+      <p>Você digitou: {{ nome }}</p>
+    </div>
+    <div>
+      <p>
+        Meu nome é {{ pessoa.nome }} e tenho {{ pessoa.idade }} anos de idade.
+      </p>
+      <input class="m-2" type="text" [(ngModel)]="pessoa.nome" />
+      <input class="m-2" type="text" [(ngModel)]="pessoa.idade" />
+    </div>
+  </article>
+</section>
+<hr />
+<section class="input-output-properties">
+  <article>
+    <h3>Input/Output Properties</h3>
+    <app-curso [nomeCurso]="nomeDoCurso"></app-curso>
+    <contador
+      [valor]="valorInicial"
+      (mudouValor)="onMudouValor($event)"
+    ></contador>
+  </article>
+</section>

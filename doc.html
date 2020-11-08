@@ -11,154 +11,319 @@
       <p>Framerwork front-end desenvolvido entre Google e Microsoft</p>
     </section>
     <section>
-      <h1>Web Components</h1>
-      <p>
-        O angular funciona com angular components, que nada menos nada mais são
-        components HTML, desenvolvidos em partes separadas e organizadas em
-        conjuntos para exibição na página
-      </p>
-      <p>Um só componente pode conter outros components etc</p>
-      <p>
-        Por convenção, para criação de components, devemos cirar a pasta do
-        component,e o arquivo .component.ts, que é o TS do nosso component. E o
-        component, deve unica e exclusivamente conter código de iteração com o
-        template, código de iteração com bancos de dados e apis devem ser
-        criados em serviçes
-      </p>
-      <p><b> meu-primeiro.component.ts</b></p>
-      <p>
-        Dentre deste arquivo . component, vamos importar o Component do angular
-        ' <b> import { Component } from '@angular/core '</b>
-      </p>
-      <p>
-        Logo em seguida usamos o decorator do component e passamos como
-        parametros o seletor, o template em caso de template inline, o
-        templateUrl em caso de arquivo HTML, e o styleUrl em caso de arquivo
-        css. ficando
-      </p>
-      <p>
-        <b> @Component</b>({ selector: 'meu-primeiro-component', template: `
-        código html`, styleUrl: ['./pasta/do/arquivo.css]'})
-      </p>
-      <p>
-        E logo em seguida, como se trata de um decorator devemos informar a
-        classe
-      </p>
-      <p>export class MeuPrimeiroComponent{ código da classe}</p>
-      <p>
-        Após isto, para utilizarmos na página principal da nossa aplicação,
-        devemos importar o nosso component, no arquivo '
-        <b> app.module.ts</b> ', após importa-lo, devemos declara-lo no
-        decorator <b> @NgModule </b>no array da chave ' declarations:
-        [AppComponent, MeuPrimeiroComponent],
-      </p>
-      <p>
-        Então sim, podemos adicionar a tag informada em selector do nosso
-        component no arquivo html principal da nossa aplicação o '
-        app.component.html '
-      </p>
-      <p>
-        Tambem podemos e devemos utilizar o CLI para criação do component de
-        forma dinamica, basta digitar no terminal '<b>
-          ng g c nome-do-component</b
-        >', que o próprio angular se encarrega de gerar os arquivos e o import
-        no @NgModule do nosso app.module.ts
-      </p>
-      <p>
-        <a href="https://angular.io/api/core/Component"
-          >Documentação do components</a
-        >
-      </p>
-      <p><strong> Introdução: Hello, world! - Aula 3</strong></p>
-    </section>
-    <hr />
-    <section>
-      <h1>Modules</h1>
-      <p>Outra poderosíssima ferramenta do angular, e o seu modo de produção</p>
-      <p>
-        Com modulos, podemos separar partes do código, como um modulo só para
-        login, outro apenas para produtos, etc.
-      </p>
-      <p>
-        Evitando assim congestionar o modulo principal da nossa aplicação o
-        <b>AppModule</b>, dentro do modulo principal, temos o
-        <b>bootstrap:</b> importado apenas nele, que significa qual a modulo
-        principal irá puxar toda a aplicação, tambem o <b>BrowserModule</b>, do
-        qual prepara a aplicação para ser rodada em um browser, há tambem o
-        <b>FormsModule</b>, utilizado em formulários, e o <b>HttpModule</b> que
-        permite utilizarmos as diretivas https, para requisição ajax. Todos
-        estes itens estão dentro do decorator <b>@NgModule</b>, há tambem a
-        chave do <b>providers</b>, que é responsável pelos serviços que
-        desejamos importat.
-      </p>
-      <p>
-        Podemos criar um module com o comando <b> ng c m nome-do-module </b> via
-        cli, irá criar a pasta com o nome do module e o .module.ts, este module
-        tambem está acompanhado do decorator <b>@NgModule</b>, ao ser criado
-        pelo cli tambem ja irá ser importado nos imports do modulo principal,
-        dentro dos nossos features modules, que são os módulos de
-        funcionalidades, podemos ter vários components sendo importado nesses
-        módulos e tambem exportados na chave do exports, ao ser exportado o
-        component dentro do feature module poderá ser utilizado no template que
-        está sendo importado o nosso module.
-      </p>
+      <h1>Introdução</h1>
+      <p>Aulas 1 a 8</p>
+      <section>
+        <h1>Web Components</h1>
+        <p>
+          O angular funciona com angular components, que nada menos nada mais
+          são components HTML, desenvolvidos em partes separadas e organizadas
+          em conjuntos para exibição na página
+        </p>
+        <p>Um só componente pode conter outros components etc</p>
+        <p>
+          Por convenção, para criação de components, devemos cirar a pasta do
+          component,e o arquivo .component.ts, que é o TS do nosso component. E
+          o component, deve unica e exclusivamente conter código de iteração com
+          o template, código de iteração com bancos de dados e apis devem ser
+          criados em serviçes
+        </p>
+        <p><b> meu-primeiro.component.ts</b></p>
+        <p>
+          Dentre deste arquivo . component, vamos importar o Component do
+          angular ' <b> import { Component } from '@angular/core '</b>
+        </p>
+        <p>
+          Logo em seguida usamos o decorator do component e passamos como
+          parametros o seletor, o template em caso de template inline, o
+          templateUrl em caso de arquivo HTML, e o styleUrl em caso de arquivo
+          css. ficando
+        </p>
+        <p>
+          <b> @Component</b>({ selector: 'meu-primeiro-component', template: `
+          código html`, styleUrl: ['./pasta/do/arquivo.css]'})
+        </p>
+        <p>
+          E logo em seguida, como se trata de um decorator devemos informar a
+          classe
+        </p>
+        <p>export class MeuPrimeiroComponent{ código da classe}</p>
+        <p>
+          Após isto, para utilizarmos na página principal da nossa aplicação,
+          devemos importar o nosso component, no arquivo '
+          <b> app.module.ts</b> ', após importa-lo, devemos declara-lo no
+          decorator <b> @NgModule </b>no array da chave ' declarations:
+          [AppComponent, MeuPrimeiroComponent],
+        </p>
+        <p>
+          Então sim, podemos adicionar a tag informada em selector do nosso
+          component no arquivo html principal da nossa aplicação o '
+          app.component.html '
+        </p>
+        <p>
+          Tambem podemos e devemos utilizar o CLI para criação do component de
+          forma dinamica, basta digitar no terminal '<b>
+            ng g c nome-do-component</b
+          >', que o próprio angular se encarrega de gerar os arquivos e o import
+          no @NgModule do nosso app.module.ts
+        </p>
+        <p>
+          <a href="https://angular.io/api/core/Component"
+            >Documentação do components</a
+          >
+        </p>
+        <p><strong> Introdução: Hello, world! - Aula 3</strong></p>
+      </section>
+      <hr />
+      <section>
+        <h1>Modules</h1>
+        <p>
+          Outra poderosíssima ferramenta do angular, e o seu modo de produção
+        </p>
+        <p>
+          Com modulos, podemos separar partes do código, como um modulo só para
+          login, outro apenas para produtos, etc.
+        </p>
+        <p>
+          Evitando assim congestionar o modulo principal da nossa aplicação o
+          <b>AppModule</b>, dentro do modulo principal, temos o
+          <b>bootstrap:</b> importado apenas nele, que significa qual a modulo
+          principal irá puxar toda a aplicação, tambem o <b>BrowserModule</b>,
+          do qual prepara a aplicação para ser rodada em um browser, há tambem o
+          <b>FormsModule</b>, utilizado em formulários, e o
+          <b>HttpModule</b> que permite utilizarmos as diretivas https, para
+          requisição ajax. Todos estes itens estão dentro do decorator
+          <b>@NgModule</b>, há tambem a chave do <b>providers</b>, que é
+          responsável pelos serviços que desejamos importat.
+        </p>
+        <p>
+          Podemos criar um module com o comando
+          <b> ng c m nome-do-module </b> via cli, irá criar a pasta com o nome
+          do module e o .module.ts, este module tambem está acompanhado do
+          decorator <b>@NgModule</b>, ao ser criado pelo cli tambem ja irá ser
+          importado nos imports do modulo principal, dentro dos nossos features
+          modules, que são os módulos de funcionalidades, podemos ter vários
+          components sendo importado nesses módulos e tambem exportados na chave
+          do exports, ao ser exportado o component dentro do feature module
+          poderá ser utilizado no template que está sendo importado o nosso
+          module.
+        </p>
 
-      <p>
-        Após criar o nosso module, o component do module e tambem exportar o
-        component do module, podemos criar outros components filhos, que podem
-        ser utilizados no component do module, porem nao em outros components,
-        criando assim components de forma privada.
-      </p>
-      <h2>Module principal</h2>
-      <p>@NgModule ({</p>
-      <p>declarations: [declaração dos components aqui]</p>
-      <p>imports: [declaração de outros modules aqui]</p>
-      <p>providers: [declaração dos services aqui]</p>
-      <p>bootstrap: [component principal da aplicação]</p>
-      <h2>Feature module</h2>
-      <p>@NgModule ({</p>
-      <p>imports: [declaração de outros modules aqui]</p>
-      <p>declarations: [declaração dos components aqui]</p>
-      <p>exports: [export do component principal]</p>
-      <p><strong> Introdução: Módulos (ngModule) - Aula 5</strong></p>
+        <p>
+          Após criar o nosso module, o component do module e tambem exportar o
+          component do module, podemos criar outros components filhos, que podem
+          ser utilizados no component do module, porem nao em outros components,
+          criando assim components de forma privada.
+        </p>
+        <h2>Module principal</h2>
+        <p>@NgModule ({</p>
+        <p>declarations: [declaração dos components aqui]</p>
+        <p>imports: [declaração de outros modules aqui]</p>
+        <p>providers: [declaração dos services aqui]</p>
+        <p>bootstrap: [component principal da aplicação]</p>
+        <h2>Feature module</h2>
+        <p>@NgModule ({</p>
+        <p>imports: [declaração de outros modules aqui]</p>
+        <p>declarations: [declaração dos components aqui]</p>
+        <p>exports: [export do component principal]</p>
+        <p><strong> Introdução: Módulos (ngModule) - Aula 5</strong></p>
+      </section>
+      <hr />
+      <section>
+        <h1>Template</h1>
+        <p>
+          O template é o código HTML do nosso component, pode ser escrito inline
+          na chave <b>template:`código html`</b> mas por convenção deve ser
+          utilizado assim apenas em casos em que o template tenha no máximo até
+          3 linhas
+        </p>
+        <p>
+          Caso ultrapasse isso deve ser utilizado a chave
+          <b>templateUrl:[./caminho/do/html.html]</b>
+        </p>
+        <p>
+          No nosso template, podemos referenciar variáveis com
+          <b>interpolação {{variável}}</b>, a variável deve ser declarada dentro
+          da nossa classe do component com type anotation
+        </p>
+        <p>Tambem podemos usar diretivas como ngFor, ngIf como em ejs</p>
+        <p>
+          Podemos tambem definir variável de escopo do template, adicionando um
+          # na frente e logo em seguida um nome #variável, sedo possível
+          acessa-la de qualquer lugar no template
+        </p>
+
+        <p><b> Introdução: Template - Aula 6</b></p>
+      </section>
+      <hr />
+      <section>
+        <h1>Serviços (Services) e Injeção de dependência (DI)</h1>
+        <p>
+          Os serviços, contem todo o código que procura e recebe informações
+          externas a aplicação, como em bancos de dados e apis
+        </p>
+        <p>
+          É um classe simples com o decorator <b>@Injectable()</b>, que permite
+          que o serviços seja utilizado em injeção de dependência.
+        </p>
+        <p>
+          Dentro da classe teremos métodos normais como em uma classe com a
+          lógica do código, e para utilizar como DI, devemos declarar no
+          constructor da classe e que desejamos receber o service, geralmente
+          como private.
+        </p>
+        <p><b> Introdução: Services e Injeção de dependência - Aula 7</b></p>
+      </section>
     </section>
     <hr />
-    <section>
-      <h1>Template</h1>
-      <p>
-        O template é o código HTML do nosso component, pode ser escrito inline
-        na chave <b>template:`código html`</b> mas por convenção deve ser
-        utilizado assim apenas em casos em que o template tenha no máximo até 3
-        linhas
-      </p>
-      <p>
-        Caso ultrapasse isso deve ser utilizado a chave
-        <b>templateUrl:[./caminho/do/html.html]</b>
-      </p>
-      <p>
-        No nosso template, podemos referenciar variáveis com
-        <b>interpolação {{variável}</b>, a variável deve ser declarada dentro da
-        nossa classe do component com type anotation
-      </p>
-      <p>Tambem podemos usar diretivas como ngFor, ngIf como em ejs</p>
-      <p><b> Introdução: Template - Aula 6</b></p>
-    </section>
     <hr />
     <section>
-      <h1>Serviços (Services) e Injeção de dependência (DI)</h1>
+      <h1>Data binding</h1>
+      <p>Aulas da 9 a 11</p>
       <p>
-        Os serviços, contem todo o código que procura e recebe informações
-        externas a aplicação, como em bancos de dados e apis
+        Em Data binding que é o como variáveis e métodos que retornam algum
+        valor, podem se comunicar com o template (html) mostrando na tela o
+        valor.
+      </p>
+      <p>Temos 4 tipos de binding em angular, são eles:</p>
+      <p>
+        <b>Interpolation</b>: {{valor}}; usado quando desejamos mostrar o valor
+        de algum atributo do component.. a informação vai do component para o
+        template.
       </p>
       <p>
-        É um classe simples com o decorator <b>@Injectable()</b>, que permite
-        que o serviços seja utilizado em injeção de dependência.
+        <b>One-way data binding: [propriedade]="valor": </b> Quando temos alguma
+        tag no HTML que tem propriedades, podemos definir o valor da própriedade
+        com algum atributo da classe como em uma tag img temos a propriedade src
+        e fazemos o property binding como [width] = "valor"..a informação vai do
+        component para o template
       </p>
       <p>
-        Dentro da classe teremos métodos normais como em uma classe com a lógica
-        do código, e para utilizar como DI, devemos declarar no constructor da
-        classe e que desejamos receber o service, geralmente como private.
+        <b>Event binding: (evento)="handler";</b> quando interagimos com a
+        lógica do component através do template.
       </p>
+      <p>
+        <b>Two-way data binding: [(ngModel)]="propriedade";</b> quando
+        conseguimos tanto interagir com o template quanto com a lógica do
+        component
+      </p>
+      <hr />
+      <section>
+        <h1>Property binding e Interpolação</h1>
+        <p>
+          Interpolation permite adicionar valores do código TS para o template
+        </p>
+        <p>
+          Já o property binding permite adicionar valores as tags HTML que
+          possuem propriedades
+        </p>
+        <p><b> Data Binding: Property binding e Interpolação - Aula 9</b></p>
+      </section>
+      <hr />
+      <section>
+        <h1>Class e Style binding</h1>
+        <p>
+          Podemos usar tambem o property binding para definir classes com
+          valores, e o style binding para definir estilos tambem com o property
+          binding.
+        </p>
+        <p><b>[class.nome-da-classe]="valor"</b></p>
+        <p><b>[style.propriedade]="valor"</b></p>
+        <p><b> Data Binding: Class e Style binding - Aula 10</b></p>
+      </section>
+      <hr />
+      <section>
+        <h1>Event binding</h1>
+        <p>Para utilizarmos event binding é simples:</p>
+        <p>
+          <b>(evento)="lógica()"</b> basta adicionar o evento entre parênteses
+          como click, mouseover,etc... e o método a ser chamado do component
+          passando ou não parâmetros
+        </p>
+        <p>Importane: podemos capurar o evento com $event</p>
+        <p><b> Data Binding: Event Binding - Aula 11</b></p>
+      </section>
+      <hr />
+      <section>
+        <h1>Two-way data binding</h1>
+        <p>
+          Com o two-way data binding, conseguimos tanto altera o valor no
+          template como tambem no component, sendo muito útil, sua sintaxe é
+          simples:
+        </p>
+        <p>
+          <b> [(ngModel)]="atributo"</b> Alterando em tempo real o o template e
+          o componet
+        </p>
+        <p>
+          Devemos nos atentar caso estejamos utilizando o ngModel em um feature
+          module, pois devemos importar o FormsModule, ja que o ngModel é uma
+          diretiva do FormsModule
+        </p>
+        <p><b> Data Binding: Two-way data binding - Aula 12</b></p>
+      </section>
+      <hr />
+      <section>
+        <h1>Input Property</h1>
+        <p>
+          Quando usamos components dentro de outros componentes, e necessitamos
+          passar informações para esse outro component, podemos utilizar o input
+          property:
+        </p>
+        <p>
+          <b> < component [propriedade]="atributo" > < component ></b>, isso
+          dentro da tag do component alvo, e no nosso component.ts devemos
+          declarar o atributo com o decorator @Input(), que pode receber como
+          parâmetro uma string para expor o atributo com o nome desejado.
+        </p>
+        <p>
+          Quando informamos um valor e não um atributo, nao precisamos utilizar
+          as chaves: <b>propriedade="valor"</b>
+        </p>
+        <p>
+          A nivel de curiosidade, podemos declarar os inputs em um array dentro
+          do @Component, com a chave inputs: [], e dentro do array informar o
+          nome dos atributos a receberem inputs, porem por convenção devemos
+          utilizar o decorator.
+        </p>
+        <p>
+          Não podemos esquecer de realizar o import do Input de dentro do
+          angular/core
+        </p>
+        <p><b> Data Binding: Input Property - Aula 13</b></p>
+      </section>
+      <hr />
+      <section>
+        <h1>Output Property</h1>
+        <p>
+          Assim como podemos passar valores para um component filho, podemos
+          transmitir informações do component filho para o component pai
+        </p>
+        <p>
+          Devemos criar um evento no component filho com
+          <b>meuEvento = new EventEmitter</b>(não esquecer de importa-lo) um
+          novo evento, e tambem utilizar o decorator <b> @Output()</b> (tambem
+          não esquecer de importa-lo), para exportar o evento.
+        </p>
+        <p>
+          Após isso, podemos utilizar o evento criado:
+          <b>meu-evento.emit(valor), em qualquer método</b>
+        </p>
+        <p>
+          No elemento pai, devemos observar o evento, e capturar o valor com um
+          método no elemento pai
+        </p>
+        <p>
+          < elemento-filho <b> (meuEvento)="onMeuEvento(valor)" > </b> <
+          elemento-filho >
+        </p>
+        <p>
+          E com a captura do valor com um método no elemento pai, podemos
+          manipular o valor
+        </p>
+        <p><b> Data Binding: Output Property - Aula 14</b></p>
+      </section>
+      <hr />
     </section>
   </body>
 </html>

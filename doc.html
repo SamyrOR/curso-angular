@@ -324,6 +324,181 @@
         <p><b> Data Binding: Output Property - Aula 14</b></p>
       </section>
       <hr />
+      <section>
+        <h1>Ciclo de vida do component</h1>
+        <p>
+          São os estágios que os componentes passam, sendo eles por ordem de
+          execução:
+        </p>
+        <p><b>constructor</b> construtor do component</p>
+        <p>
+          <b>ngOnChanges</b>Executado quando há mudanças no component, altamente
+          recomendado para elementos que utilizam input property
+        </p>
+        <p>
+          <b>ngOnInit</b>Quando o component é inicializado, altamente
+          recomendado para components que não tem property binding e para
+          elementos que necessitam de conexão com algum meio externo
+        </p>
+        <p><b>ngDoCheck</b>A cada ciclo de verificação de mudanças</p>
+        <p>
+          <b>ngAfterContentInit</b>Depois que o conteúdo externo é inserido na
+          view
+        </p>
+        <p>
+          <b>ngAfterContentChecked</b>A cada verificação do conteúdo inserido
+        </p>
+        <p><b>ngAfterViewtInit</b>Depois que todo a view é carregada</p>
+        <p>
+          <b>ngAfterViewtChecked</b>A cada verificação de mudança no view do
+          component
+        </p>
+        <p>
+          <b>ngOnDestroy</b>Quando a diretiva, pipe, service, component é
+          destruído. Util para finalizar um observable.
+        </p>
+        <p>
+          Todos devem ser implementados na classe e importados do @angular/core
+        </p>
+        <p><b> Data Binding: Ciclo de vida do component - Aula 15</b></p>
+      </section>
+      <hr />
+      <section>
+        <h1>Acesso ao DOM e o Template com ViewChild</h1>
+        <p>
+          Quando declaramos uma váriavel local no template com o #, podemos
+          acessa-la dentro do component, atribuindo a uma variável com o
+          decorator <b> @ViewChild()</b> que tambem deve ser importado, e
+          passando o nome da variável do template como parâmetro pra o ViewChild
+        </p>
+        <p>
+          <b>@ViewChild('variavelTemplate') variávelComponent: ElementRef</b>
+          Devemos declarar a variável do component que recebe o viewchild como
+          <b>ElementRef</b> ( que tambem deve ser importado), nele contem o
+          atributo nativeElement, que retorna o elemento nativo do template, e
+          através dele podemos recuperar valores e etc
+        </p>
+        <p>
+          <b>
+            Data Binding: Acesso ao DOM e o Template com ViewChild - Aula 16</b
+          >
+        </p>
+      </section>
+    </section>
+    <hr />
+    <hr />
+    <section>
+      <h1>Angular CLI</h1>
+      <section>
+        <h1>Instalação e criação de projetos</h1>
+        <p>
+          Para instalar o Angular CLI, devemos ter o nodejs e o npm instalado,
+          funciona acima da versão 4.0
+        </p>
+        <h3>Comandos Angular CLI:</h3>
+        <section>
+          <p><b>ng init</b> inicia um projeto angular no diretório</p>
+          <p>
+            <b>ng new my-app</b> inicia um projeto criando a pasta e instalando
+            todas as dependências
+          </p>
+          <p></p>
+
+          <p>
+            <b>ng serve</b> serve o nosso projeto ao browser para que possamos
+            ve-lo pelo navegador
+          </p>
+          <b> Angular CLI: Instalando e criando projetos - Aula 17</b>
+        </section>
+        <section>
+          <h3>Gerando as classes do angular</h3>
+        </section>
+        <p>
+          <b>ng g</b> este comando, o generate é o que gera nossas classes com
+          os nomes e arquivos e ja toda a estrutura de acordo com a classe
+          gerada com o melhor padrão para o angular
+        </p>
+
+        <ul>
+          <li>
+            <b>ng g component meu-component</b>; gera um component com toda a
+            sua estrutura
+          </li>
+          <li>
+            <b>ng g service meu-servico</b>; gera um servico com toda a sua
+            estrutura
+          </li>
+          <li>
+            <b>ng g directive minha-diretiva</b>; gera uma diretiva com toda a
+            sua estrutura
+          </li>
+          <li>
+            <b>ng g pipe meu-pipe</b>; gera um pipe com toda a sua estrutura
+          </li>
+          <li>
+            <b>ng g class minha-classe</b>; gera uma classe com toda a sua
+            estrutura
+          </li>
+          <li>
+            <b>ng g interface miha-interface</b>; gera uma interface com toda a
+            sua estrutura
+          </li>
+          <li>
+            <b>ng g enum meu-enum</b>; gera um enum com toda a sua estrutura
+          </li>
+        </ul>
+        <b> Angular CLI: ng generate - Aula 18</b>
+      </section>
+      <section>
+        <h1>Usando pre-processadores</h1>
+        <p>
+          Para utilizar pre processadores como sass, less, stylus, ao iniciar o
+          projeto o próprio CLI, questiona qual extensão desejamos utilizar
+        </p>
+        <p>
+          Caso ja tenhamos um projeto iniciado, podemos alterar com o comando
+          <b>ng set defaults.styleExt scss</b>, com a extensão desejada, assim
+          todo novo component criado utilizara a nova extensão, mas nao altera a
+          extensão de components já gerados
+        </p>
+        <b> Angular CLI: Pre processadores com angular - Aula 19</b>
+      </section>
+      <section>
+        <h1>lint, test, e2e</h1>
+        <ul>
+          <li>
+            <b>ng lint</b> serve para fazer o lint do nosso app parar verificar
+            se está de acordo com o style guide do angular, muito util!
+          </li>
+          <li>
+            <b>ng test</b> executa todos os arquivos .spec.ts do nosso app, e
+            roda todos os testes, os teste são realizado por <b> jasmine</b> e
+            interpretado pelo <b> karma</b>
+          </li>
+          <li>
+            <b>ng e2e</b> realiza teste end to end da aplicação com o
+            protractor, (teste de integração)
+          </li>
+        </ul>
+        <b> Angular CLI: ng lint, teste, e2e - Aula 20 </b>
+      </section>
+      <section>
+        <h1>Gerando build de produção</h1>
+        <p>Para gerar build de desenvolvimento e produção temos:</p>
+        <ul>
+          <li>
+            <b>ng build --dev</b>; gera a pasta dist com os arquivos utilizados
+            em produção, porem ainda legíveis e indentados, útil para debug
+          </li>
+          <li>
+            <b
+              >ng build --prod; gera a pasta dist com os arquivos de produção,
+              completamente minificados e ilegíveis, apenas o código funcional
+              para a aplicação</b
+            >
+          </li>
+        </ul>
+      </section>
     </section>
   </body>
 </html>

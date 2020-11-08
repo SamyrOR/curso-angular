@@ -45,7 +45,7 @@ export class DataBindingComponent implements OnInit {
   }
 
   onKeyUp(evento: KeyboardEvent): void {
-    this.valorAtual = evento.target.value;
+    this.valorAtual = (evento.target as HTMLInputElement).value;
   }
 
   salvarValor(valor): void {

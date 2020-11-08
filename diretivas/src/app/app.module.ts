@@ -3,12 +3,11 @@ import { NgModule } from '@angular/core';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import { DiretivaNgifComponent } from './diretiva-ngif/diretiva-ngif.component';
 
-import { DataBindingModule } from './data-binding/data-binding.module';
-import { CicloComponent } from './ciclo/ciclo.component';
 @NgModule({
-  declarations: [AppComponent, CicloComponent],
-  imports: [BrowserModule, AppRoutingModule, DataBindingModule],
+  declarations: [AppComponent, DiretivaNgifComponent],
+  imports: [BrowserModule, AppRoutingModule],
   providers: [],
   bootstrap: [AppComponent],
 })

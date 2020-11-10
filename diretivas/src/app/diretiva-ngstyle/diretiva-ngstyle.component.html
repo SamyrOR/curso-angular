@@ -1,0 +1,20 @@
+<h5>Styles com property biding (style binding)</h5>
+<button
+  [style.backgroundColor]="ativo ? 'blue' : 'gray'"
+  [style.color]="ativo ? 'white' : 'black'"
+  [style.fontWeight]="ativo ? 'bold' : 'normal'"
+  [style.fontSize]="tamanhoFont + 'px'"
+  (click)="mudarAtivo()"
+>
+  Mudar atributo ativo
+</button>
+<h5>Styles com diretiva ngStyle</h5>
+<button
+  [ngStyle]="{
+    backgroundColor: ativo ? 'blue' : 'gray',
+    color: ativo ? 'white' : 'black'
+  }"
+  (click)="mudarAtivo()"
+>
+  Mudar atributo ativo
+</button>

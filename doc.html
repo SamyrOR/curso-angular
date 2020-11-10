@@ -498,6 +498,117 @@
             >
           </li>
         </ul>
+        <b> Angular CLI: Gerando build de produção - Aula 22 </b>
+      </section>
+      <hr />
+      <section>
+        <h1>Instalando bibliotecas externas</h1>
+        <p>
+          Junto com o angular, podemos instalar bibliotecas externas de diversas
+          formas
+        </p>
+        <p>
+          Informando o caminho dos styles e scripts direto no arquivo
+          <b>angular.json</b>
+        </p>
+        <p>
+          Direto no arquivo index.html ou style.css ( não recomendável, apenas
+          para fontes do google)
+        </p>
+        <p>
+          E tambem instalando através do npm e importando direto no modulo
+          principal, ou nos módulos que vamos utilizar.
+        </p>
+        <b> Angular CLI: Instalando bibliotecas externas - Aula 23 </b>
+      </section>
+    </section>
+    <hr />
+    <hr />
+    <section>
+      <h1>Diretivas</h1>
+      <p>
+        <b>Diretivas estruturais</b>Interagem com a view e modificam o DOM ou o
+        HTML(*ngFor, *ngIf)
+      </p>
+      <p>
+        <b>Diretivas de atributos</b>Interagem com com o elemento em que foram
+        aplicadas (ng-class, ng-style)
+      </p>
+      <p>
+        Muito importante, devemos importar o CommonModule para o modulo dos
+        components em que vamos utilizar as diretivas nativas
+      </p>
+      <hr />
+      <section>
+        <h1>*ngIf</h1>
+        <p>
+          O *ngIf funciona de forma similar ao if else do JS normal, apenas muda
+          a sintaxe, atribuímos ao como propriedade da tag HTML a palavra
+          reservada <b> *ngIf="código"</b>
+        </p>
+        <p>
+          Devemos ficar atentos, pois o ngIf alterado o DOM e pode ser custoso,
+          então sempre que possível (em árvores pequenas do DOM), podemos e
+          devemos utilizar o [hidden], pois é menos custoso a performance
+        </p>
+        <b> Diretivas: ngIf - Aula 25 </b>
+      </section>
+      <hr />
+      <section>
+        <h1>*ngSwitch, ngSwitchCase, ngSwitchDefault</h1>
+        <p>Tambem funcionando de forma similar ao switch case do JS</p>
+        <p>definimos em uma tag pai o <b> [ngSwitch]="variável"</b></p>
+        <p>
+          nos elementos filhos, usamos o <b>*ngSwitchCase="valor1"</b>, e o
+          código dentro da tag
+        </p>
+        <p>
+          e para valores padrão definimos o <b>*ngSwitchDefault</b> e o valor a
+          ser exibido tambem dentro da tag
+        </p>
+        <b> Diretivas: ngIf - Aula 26 </b>
+      </section>
+      <section>
+        <h1>*ngFor</h1>
+        <p>
+          Outra diretiva nativa muito ultio no caso de iteração com arrays,
+          basta adicionar o <b>*ngFor="let item of array"</b> e dentro da tag
+          HTML interpolar com a váriavel local criada {{item}}.
+        </p>
+        <p>
+          Podemos tambem utilizar o index adicionando <b>, let i = index </b>,
+          logo após o array no *ngFor
+        </p>
+        <b> Diretivas: ngFor - Aula 27 </b>
+      </section>
+      <hr />
+      <section>
+        <h1>Sobre o * e template</h1>
+        <p>
+          Quando utilizamos o * antes da diretiva, quer dizer, que por baixo dos
+          panos, o angular está criando uma tag template e como property binding
+          informando a nossa diretiva
+        </p>
+        <b> Diretivas: Sobre o * e template - Aula 28 </b>
+      </section>
+      <hr />
+      <section>
+        <h1>[ngClass]</h1>
+        <p>
+          O <b>[ngClass]</b> substitui em casos de verificação para muitas
+          classes, o class binding, sendo possível com o ngClass retornar um
+          objeto, com a chave entra aspas e o seu valor como a condição
+        </p>
+        <p>[ngClass]="'class: condição'"</p>
+        <b> Diretivas: ngClass - Aula 29 </b>
+      </section>
+      <section>
+        <h1>[ngStyle]</h1>
+        <p>
+          Funcionar de forma idêntica ao [ngClass], porem com atributos de
+          estilo, e com condicionais ternarias
+        </p>
+        <p><b>[ngStyle]</b>="{'backgroundColor: (ativo ? 'blue : gray}</p>
       </section>
     </section>
   </body>

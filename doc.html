@@ -611,6 +611,7 @@
         <p><b>[ngStyle]</b>="{'backgroundColor: (ativo ? 'blue : gray}</p>
         <b> Diretivas: ngStyle - Aula 30 </b>
       </section>
+      <hr />
       <section>
         <h1>Elvis operator</h1>
         <p>
@@ -625,6 +626,61 @@
           exibido
         </p>
         <p><b>Diretivas: Operador Elvis - Aula 31</b></p>
+      </section>
+      <hr />
+      <section>
+        <h1>ng-content</h1>
+        <p>
+          Com o input property conseguimos passar dados através de variáveis
+          para o component, com o ng-content conseguimos passar conteúdo HTML,
+          através da tag <b> < ng-content > </b> no component que vai receber o
+          conteúdo, e no component que irá receber o conteúdo passar a div com a
+          class de acordo com o <b> select </b>do ng-content
+        </p>
+        <p>Component que envia <b>< div class="titulo">Titulo enviado</b></p>
+        <p>
+          Component que recebe
+          <b>< ng-content select=".titulo"></b>
+        </p>
+        <p>E será exibido o conteúdo de acordo com o enviado</p>
+        <p><b>Diretivas: ng-content - Aula 32</b></p>
+      </section>
+      <hr />
+      <section>
+        <h1>Criando diretivas de atributos customizadas</h1>
+        <p>
+          Para criar diretivas de atributos (que alteram o estilo do elemento)
+          podemos gerar uma diretiva pelo cli <b>ng g d nome-diretiva</b>
+        </p>
+        <p>
+          Após a criação teremos o decorator <b> @Directive</b>, e como
+          parâmetro o <b>selector</b> que vai ser o nome da diretiva dentro da
+          tag, , para referenciarmos o elemento em que a diretiva foi inserida,
+          devemos importar o <b>ElementRef</b>, e para manipular o elemento
+          devemos importar e utilizar o <b>Renderer2</b>
+        </p>
+        <p>
+          Tanto o ElementRef quanto Renderer2 devem ser importados como injeção
+          de dependência no constructor com
+          <b>private _elementRef: ElementRef</b> e
+          <b>private _renderer: Renderer2</b>
+        </p>
+        <p>
+          O após criar o atributo recebendo o ElementRef, temos que acessar o
+          elemento dentro do atributo nativeElement, passando para o _renderer
+        </p>
+        <p>
+          No renderer, temos diversos métodos, passamos no
+          <b
+            >.setElementStyle(this._elementRef.nativeElement, propriedadeCSss,
+            valor-da-propriedade)</b
+          >
+        </p>
+        <p>
+          E está criado a nossa diretiva, bata utiliza-la dentro da tag do
+          elemento a ser modificado
+        </p>
+        <p><b>Diretivas: Criando uma diretiva de atributo - Aula 33</b></p>
       </section>
     </section>
   </body>

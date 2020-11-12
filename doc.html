@@ -682,6 +682,79 @@
         </p>
         <p><b>Diretivas: Criando uma diretiva de atributo - Aula 33</b></p>
       </section>
+      <hr />
+      <section>
+        <h1>HostListener e HostBinding</h1>
+        <p>
+          <b>HostListener</b> escuta eventos na tag da qual a diretiva foi
+          inclusa
+        </p>
+        <p>
+          <b>HostBinding</b> permite a associação de um atributo ou classe CSS,
+          para uma variável
+        </p>
+        <p>
+          Ambos devem ser importados do angular core, e utilizados com decorator
+          o decorator de mesmo nome, em <b>@HostListener</b> passamos o evento
+          como parâmetro e em seguida o método a ser executado
+        </p>
+        <p><b>@HostListener('evento') metodo() {lógica do método}</b></p>
+        <p>
+          No
+          <b
+            >@HostBinding('class' ou 'style.propriedade')
+            variável-para-o-binding</b
+          >
+        </p>
+        <p>Ambos utilizados de forma conjunta são extremamente poderosos</p>
+        <p><b>Diretivas: HostListener e HostBiding- Aula 34</b></p>
+      </section>
+      <hr />
+      <section>
+        <h1>Input e property binding</h1>
+        <p>
+          Podemos utilizar inputs com property binding tambem nas diretivas, e
+          tambem conseguimos pela inteligência do angular, criar inputs com o
+          mesmo nome da nossa diretiva <b>[diretiva]="'valor'"</b>
+        </p>
+        <p><b>Diretivas: Input e Property Binding - Aula 35</b></p>
+      </section>
+      <hr />
+      <section>
+        <h1>Criando diretiva de estrutura</h1>
+        <p>
+          Para criar diretivas de estrutura como um ng-else, devemos tambem
+          utilizar o Input property
+        </p>
+        <p><b>@Input() set nome(condicao:boolean){ lógica } </b></p>
+        <p>
+          Junto com o <b>TemplateRef</b> que referencia o template, e o
+          <b>ViewContainerRef</b>, que é o responsável pela criação do template
+          na view com .createEmbeddedView(this._templateRef)
+        </p>
+        <p><b>Diretivas: Criando diretiva de estrutura - Aula 36</b></p>
+      </section>
+    </section>
+    <hr />
+    <hr />
+    <section>
+      <h1>Services (Serviços)</h1>
+      <p>
+        Os services são os responsáveis por toda a lógica do negócio da
+        aplicação, sempre será os services que farão a comunicação com os
+        servidores back end para aquisição e tratamento de dados, os components
+        são responsáveis apenas pela exibição dos dados
+      </p>
+      <p><b>Serviços: Introdução a Serviços- Aula 37</b></p>
+      <hr />
+      <section>
+        <h1>Criando um serviço</h1>
+        <p>
+          Para criar um serviço basta mandar no cli o comando
+          <b>ng g s service-name</b>
+        </p>
+        <p><b>Serviços: Criando um serviço- Aula 38</b></p>
+      </section>
     </section>
   </body>
 </html>

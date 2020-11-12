@@ -755,6 +755,60 @@
         </p>
         <p><b>Serviços: Criando um serviço- Aula 38</b></p>
       </section>
+      <hr />
+      <section>
+        <h1>Como usar serviço em um component + Injeção de dependência</h1>
+        <p>
+          Para utilizarmos o serviço gerado em um component, devemos através da
+          injeção de dependência, devemos importar o service no component, criar
+          um atributo no component com o nome e o type do service, no construtor
+          devemos passar como parâmetro um atributo private com o nome do
+          <b> private _nomeService: NomeService</b>
+          serviço e o tipo do serviço , e dentro do construtor iniciar o outro
+          atributo recebendo o valor do atributo privado
+          <b> this.nomeService = this._nomeService</b>
+        </p>
+        <p>
+          E dentro do ngOnInit(){} que é executado quando o component é
+          iniciado, definir as ações do serviço
+        </p>
+        <p>
+          <b
+            >Serviços: Injeção de dependência + como usar um serviço em um
+            component - Aula 39</b
+          >
+        </p>
+      </section>
+      <hr />
+      <section>
+        <h1>Singleton e várias instâncias</h1>
+        <p>
+          Quando criamos um service, ele é importado no app modulo, e todo
+          component tem acesso ao service. Para que apenas alguns components
+          tenham acesso ao service, o mesmo deve ser declarado nos features
+          modules e não no app module, limitando assim o seu escopo
+        </p>
+        <p>
+          Porem mesmo quando isso ocorre, o serviço é instânciado apenas uma
+          vez, sendo assim é chamado o singleton, ou seja, uma alteração no
+          service muda em toda a aplicação
+        </p>
+        <p>
+          Para que isso não ocorra, podemos instanciar o service diretamente no
+          component decorator do component com a chave
+          <b>providers: [MeuService]</b>, o mesmo será instânciado tambem no
+          component, mas seu uso é exclusivo e qualquer alteração não afeta a
+          aplicação global.
+        </p>
+        <p>
+          <b
+            >Serviços: Escopo de instâncias de serviços e módulos (singleton e
+            várias instâncias) - Aula 40</b
+          >
+        </p>
+      </section>
+      <hr />
+      <section><h1></h1></section>
     </section>
   </body>
 </html>

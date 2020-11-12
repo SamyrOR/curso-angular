@@ -9,8 +9,16 @@ import { CursosService } from './cursos.service';
 })
 export class CursosComponent implements OnInit {
   cursos: string[];
+  cursosServices: CursosService;
 
-  constructor() {}
+  constructor(private _cursosService: CursosService) {
+    this.cursosServices = this._cursosService;
+  }
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.cursos = this.cursosServices.getCursos();
+    this.cursosServices.emitirCursoCriado.subscribe((curso) =>
+      console.log(curso)
+    );
+  }
 }

@@ -930,12 +930,51 @@
       <section>
         <h1>Pipe puro</h1>
         <p>
+          O Pipe puro não olha as modificações do valor que é passado como para
+          o parâmetro para o método transform
+        </p>
+        <p>
           Atenção para não utilizar pipes de filtro para arrays, pois o mesmo
           caso esteja com o filtro e seja adicionado um novo item no array, ele
           simplesmente não capta a mudança.
         </p>
         <p>
           <b>Pipes: Criando um pipe puro- Aula 46</b>
+        </p>
+      </section>
+      <hr />
+      <section>
+        <h1>Pipe impuro</h1>
+        <p>
+          Para transforma um pipe em impuro, basta adicionar <b>pure: false</b>,
+          no decorator do pipe. Que o mesmo passará a verificar se o
+          <b>value</b> foi modificado.
+        </p>
+        <p>
+          <b>Pipes: Criando um pipe impuro- Aula 47</b>
+        </p>
+      </section>
+      <hr />
+      <section>
+        <h1>Filtro em arrays</h1>
+        <p>
+          Devemos sempre fazer filtros e order-by por métodos do component, não
+          por pipes!!
+        </p>
+        <p>
+          <b>Pipes: Criando um pipe impuro- Aula 47</b>
+        </p>
+      </section>
+      <section>
+        <h1>Pipe async</h1>
+        <p>
+          Quando trabalhamos com dados assíncronos, como em requisições,
+          promises e observables, podemos utilizar o pipe <b>| async</b> que irá
+          aguardar que o valor esteja disponível para que seja exibido na tela,
+          caso contrário, o valor será exibido de forma incorreta
+        </p>
+        <p>
+          <b>Pipes: Pipe Assíncrono- Aula 48</b>
         </p>
       </section>
     </section>

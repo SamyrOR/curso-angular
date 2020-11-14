@@ -808,7 +808,136 @@
         </p>
       </section>
       <hr />
-      <section><h1></h1></section>
+      <section>
+        <h1>Broadcast de eventos</h1>
+        <p>
+          Quando temos um serviço em diferentes instâncias para que haja
+          comunicação entre os componentes devemos emitir eventos com o
+          <b>EventEmitter< type ></b>
+        </p>
+        <p>
+          Quando é o component filho, podemos emitir um evento normal, e dentro
+          daquela instância ele será executado, porem para ser executado tambem
+          em outras instâncias o evento deve ser <b>static</b>, pois quando
+          usamos um service, devemos instancia-lo, quando o criamos uma nova
+          instância apenas dentro daquela isntância os eventos normais serão
+          ouvidos, porem com o <b>static</b>, não é necessário declaração de
+          instância para o service.
+        </p>
+        <p>
+          <b
+            >Serviços: Comunicação entre componentes usando serviços (broadcast
+            de eventos) - Aula 41</b
+          >
+        </p>
+      </section>
+      <hr />
+      <section>
+        <h1>Injetando um serviço em outro</h1>
+        <p>
+          Para realizarmos está tarefa basta criar o serviço, importa-lo e
+          injetar como dependência em outro serviço
+        </p>
+        <p>
+          <b>Serviços: Injetando um serviço em outro serviço - Aula 42</b>
+        </p>
+      </section>
+    </section>
+    <hr />
+    <hr />
+    <section>
+      <h1>Pipes</h1>
+      <p>
+        Pipe são formatadores dos dados, com pipes conseguimos deixar os dados
+        muito mais visíveis, utilizamos o pipe com o simbolo do pipe
+        <b>| nome-pipe:parametro</b>
+      </p>
+      <p>
+        Os pipes podem ser aninhados e serão executados de acordo com a ordem de
+        declaração
+      </p>
+      <hr />
+      <section>
+        <h1>Pipes nativos</h1>
+        <p>
+          <b>| uppercase</b> e <b>| lower case </b>; transforma o texto em
+          minúsculo e maiúsculo respectivamente
+        </p>
+        <p>
+          <b>|number:'1.1-2'</b>; formata o número, o primeiro parâmetro são as
+          casas de inteiros (antes da vírgula), e .1-2, são as casas decimais de
+          tanto até tanto, ou de 1-1 mesmo.
+        </p>
+        <p>
+          <b>| currency:'Moeda':true</b>; transforma o número em moeda, sendo o
+          primeiro parâmetro a moeda, e o segundo o símbolo, ou código, etc.
+        </p>
+        <p>
+          <b>| date:'dd-MM-yyy'</b>; formata a data, e passando parâmetro
+          formata de acordo com o parâmetros
+        </p>
+        <p>
+          <b>| json</b>; transforma objetos literais javascript em objetos json
+        </p>
+        <p>
+          <b>Pipes: Usando Pipes - Aula 43</b>
+        </p>
+      </section>
+      <hr />
+      <section>
+        <h1>Criando um pipe</h1>
+        <p>
+          Para criar um pipe, utilizamos o comando <b>ng g p nome-pipe</b> após
+          isso será gerado o pipe, e seu nome.
+        </p>
+        <p>
+          A classe do pipe implementa o PipeTransforms, e é dentro do
+          <b>transform(value, args)</b> que recebe o valor e argumentos, e
+          implementamos a lógica do pipe e retornamos o resultado
+        </p>
+        <p>
+          <b>Pipes: Criando um Pipe - Aula 44</b>
+        </p>
+      </section>
+      <hr />
+      <section>
+        <h1>Aplicando Intercionalização</h1>
+        <p>
+          Os pipes agem de acordo com o <b>locale</b> (localidade) definido, e
+          por padrão o do Angular é en-US, mas podemos alterar o locale para o
+          angular trabalhar de acordo com a nossa localidade
+        </p>
+        <p>
+          Para isso podemos utilizar um service, ou injetar direto em providers,
+          mas antes, devemos importar o locale
+          <b>import localePt from '@angular/common/locales/pt';</b> e o
+          <b>import { registerLocaleData } from '@angular/common';</b>, após
+          importa-los, devemos registrar o locale
+          <b>registerLocaleData(localePt);</b>
+        </p>
+        <p>
+          Só então, vamos ao providers e definimos o objeto
+          <b>
+            { provide: LOCALE_ID, deps: [MeuServico], useFactory: (meuServico)
+            => meuServico.getLocale()}</b
+          >
+        </p>
+        <p>
+          <b>Pipes: Aplicando locale nos pipes - Aula 45</b>
+        </p>
+      </section>
+      <hr />
+      <section>
+        <h1>Pipe puro</h1>
+        <p>
+          Atenção para não utilizar pipes de filtro para arrays, pois o mesmo
+          caso esteja com o filtro e seja adicionado um novo item no array, ele
+          simplesmente não capta a mudança.
+        </p>
+        <p>
+          <b>Pipes: Criando um pipe puro- Aula 46</b>
+        </p>
+      </section>
     </section>
   </body>
 </html>

@@ -1111,7 +1111,7 @@
           .navigate(['/caminho'], parâmetro?)
         </p>
         <p>
-          <b>Rotas: Rotas imperativas: Redirecionamento via código - Aula 54</b>
+          <b>Rotas: Rotas imperativas: Redirecionamento via código - Aula 55</b>
         </p>
       </section>
       <hr />
@@ -1136,6 +1136,9 @@
             ++this.pagina }, })</b
           >
         </p>
+        <p>
+          <b>Rotas: Definindo e extraindo parâmetros de url(query) - Aula 56</b>
+        </p>
       </section>
       <hr />
       <section>
@@ -1158,6 +1161,106 @@
         <p>
           Nosso router module, vai ser importado no module do component
           principal, que será importado como module no <b>app.module.ts</b>
+        </p>
+        <p>
+          <b
+            >Rotas: Criando um módulo de rotas && Criando um módulo de
+            funcionalidades - Aula 57-58</b
+          >
+        </p>
+      </section>
+      <hr />
+      <section>
+        <h1>Rotas filhas</h1>
+        <p>
+          Para criação de rotas filhas, dentro de um módulo de rotas de
+          funcionalidade, adicionamos na rota principal a chave
+          <b>children: []</b>, passando dentro do array, todas as outras rotas
+          filhas, sendo assim será renderizado junto com a rota pai.
+        </p>
+        <p>
+          Não esquecer da tag <b> < router-outlet > </b>dentro do component pai
+        </p>
+        <p>
+          <b>Rotas: Rotas filhas - Aula 61</b>
+        </p>
+      </section>
+      <hr />
+      <section>
+        <h1>Lazy Loading</h1>
+        <p>
+          Quando não definimos o lazy loading nas rotas, carregamos toda a
+          aplicação de uma vez, o que deixa nossa aplicação mais pesada,
+          seguindo os padrões de boas práticas, temos a nossa aplicação
+          modularizada, e quando há rotas filhas, podemos carregar com o
+          <b>lazy loading</b>, que nos permite carregar os arquivos necessários
+          de acordo com a navegação, deixando assim a aplicação mais leve.
+        </p>
+        <p>
+          Sintaxe
+          <b
+            >{ path: 'minhaRota', loadChildren: () =>
+            import('./rota/minhaRota.module').then(m => m.MinhaRotaModule) }</b
+          >
+        </p>
+        <p>
+          Assim, a aplicação modularizada será carregada de acordo com os
+          arquivos necessários para a navegação
+        </p>
+        <p>
+          Importante não esquecer de apagar os imports e declaração do modulo no
+          modulo principal da aplicação e nenhum outro lugar da aplicação, e
+          tambem dentro do routing do component, declarar o caminho principal
+          apenas com <b>''</b>, pois já será declarado dentro do
+          <b>app-routing</b>
+        </p>
+        <p>
+          <b>Rotas: Lazy Loading - Aula 62</b>
+        </p>
+      </section>
+      <hr />
+      <section>
+        <h1>Tela de login e como não mostrar o navbar</h1>
+        <p>
+          Para que possamos autenticar um usuário, precisamos de um service,
+          dentro do service há a lógica de autenticação, e caso o usuário seja
+          autenticado, através do router podemos redirecionar a página para o
+          inicio, caso o usuario ainda não esteja logado, podemos esconder a
+          barra de navegação, para isso, criamos um
+          <b>event emitter boolean</b>, e adicionamos no autenticador do
+          usuário, caso o usuário seja autenticado, podemos emitir um true, e
+          caso não emitimos o false.
+        </p>
+        <p>
+          Dentro do component que possui a navbar, definimos uma variável
+          subscrita no evento criado, e no template, adicionamos um if, se a
+          variável for true, mostra a nav bar, caso contrario não será exibida.
+        </p>
+        <p>
+          <b>Rotas: Tela de login e como não mostrar o NavBar - Aula 63</b>
+        </p>
+      </section>
+      <hr />
+      <section>
+        <h1>Guarda de rota CanActivate</h1>
+        <p>
+          Podemos colocar guarda nas rotas, para no exemplo mais prático, o
+          usuário não esteja autenticado, não consegui acessar páginas do site
+          que apenas usuários autenticados conseguem acessar.
+        </p>
+        <p>
+          Para isso, geramos o guarda de rota com <b>ng g guard nome-guarda</b>,
+          após gerado, o guarda ja terá toda a estrutura necessária, devemos
+          apenas desenvolver a lógica denro do nosso servico autenticador, um
+          metodo boolean para que caso o usuário esteja autenticado retorn true,
+          e caso não, retorne false, importamos e aplicamos esse metodo dentro
+          do guarda, e caso seja verdadeiro retorna true e caso falso direciona
+          o usuário para a página de autenticação
+        </p>
+        <p>
+          Para que o guarda funcione precisamos adicionar a chave com o tipo do
+          guarda, ex <b>canActivate</b> e o qual o guarda será usado,
+          <b>canActivate:[AuthGuard]</b>, então a rota passará a ser protegida!
         </p>
       </section>
     </section>

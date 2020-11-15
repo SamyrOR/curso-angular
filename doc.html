@@ -978,5 +978,188 @@
         </p>
       </section>
     </section>
+    <hr />
+    <hr />
+    <section>
+      <h1>Rotas</h1>
+      <p>
+        São através das rotas que nossa aplicação vira uma
+        <b>SPA (Single-page aplication)</b> ou seja, podemos navegar entre os
+        componentes, ou hashes sem ter que renderizar novamente o nosso
+        component, auxiliando bastante o desmpenho.
+      </p>
+      <p>
+        <b>Rotas: Introdução - Aula 49</b>
+      </p>
+      <hr />
+      <section>
+        <h1>Configurando rotas simples</h1>
+        <p>
+          Para utilizar as rotas, quando gerado a aplicação, será questionado
+          pelo CLI se usaremos rotas, ao aceitar, ele irá gerar o arquivo
+          principal de rota, e gerará a base e importará os modules de acordo,
+        </p>
+        <p>
+          Dentro do arquivo de rota, termos uma
+          <b>const routes: Routes = []</b> e é dentro do array que definimos as
+          rotas
+        </p>
+        <p>
+          Temos que adicionar um objeto, com chaves de
+          <b
+            >{ path:'nome-do-caminho'(/caminho), component: NomeDoComponent},</b
+          >
+          para a base, deixamos o <b>path: ''</b> vazio
+        </p>
+        <p>
+          Dentro do nosso modulo de rotas, tem o decorator do
+          <b>@NgModule</b> com uma chave de <b>imports</b> importando o
+          <b>RouterModule.forRoot(routes)</b>, o .forRoot, indica que estamos
+          importando as rotas para a rota principal da aplicação, caso nossas
+          rotas possuam outras rotas, devemos criar outro arquivo de rotas com
+          <b>.forChild(routes)</b>
+        </p>
+        <p>
+          Para que a nossa rota seja exibida no component destino, devemos
+          utilizar a tag <b>< router-outlet ></b>, e no nosso
+          <b>index.html</b> a uma tag dentro do head,
+          <b>< base href="/" /></b> que significa que a nossa aplicação começa
+          da /, poderíamos adicionar alguma informação e nossa aplicação
+          começaria dali. (/info), e apartir disso toda aplicação começa de
+          /info
+        </p>
+        <p>
+          <b>Rotas: Configurando rotas simples - Aula 50</b>
+        </p>
+      </section>
+      <hr />
+      <section>
+        <h1>RouterLink</h1>
+        <p>
+          Para definir que alguma tag <b>a</b> direcione para nossas rotas,
+          dentro da tag adicionamos o <b>routerLink="/caminho"</b>, então será
+          redirecionado para a rota informada
+        </p>
+        <p>
+          <b>Rotas: RouterLink: definindo rotas no template - Aula 51</b>
+        </p>
+      </section>
+      <hr />
+      <section>
+        <h1>RouterLinkActive</h1>
+        <p>
+          O <b>routerLinkActive="classe"</b> permite adicionar um classe CSS
+          quando a rota do link estiver ativa, útil para estilizar links ativos
+          em uma navbar
+        </p>
+        <p>
+          <b
+            >Rotas: RouterLinkActive: aplicando CSS em rotas ativas - Aula 52</b
+          >
+        </p>
+      </section>
+      <section>
+        <h1>Definindo um parâmetros em rotas</h1>
+        <p>
+          Para definirmos rotas dinânimcas com parâmetros, podemos no array de
+          rota adicionar,
+          <b>{ path: 'cursos/:id', component: CursoDetalheComponent },</b>,
+          perceba que há <b>:/id</b>, ou seja, qualquer rota curso com algum
+          valor, será interpretado como id a página irá apontar para o component
+          correspondente.
+        </p>
+        <p>
+          Para passar o parâmetro no template, devemos usar o <b>routerLink</b>,
+          como property binding, passando um array
+          <b>[routerLink]="['/caminho', parametro.value]"</b>
+        </p>
+        <p>
+          <b>Rotas: Definindo e extraindo parâmetros de roteamento - Aula 53</b>
+        </p>
+      </section>
+      <hr />
+      <section>
+        <h1>Escutando mudanças nos parâmetros</h1>
+        <p>
+          Para escutar de forma dinâmica qual o parâmetro inserido, devemos
+          importar e injetar o <b>ActivatedRoute</b>, que é uma instância da
+          rota ativa, dentro do life cilcly hook <b>ngOnInit()</b> definimos
+          através de subscribe que vamos escutar
+          <b>this.route.params.subscribe()</b> passando como parâmetro uma arrow
+          function <b>params => {this.id = params['id']}</b>
+        </p>
+        <p>
+          <b>Boas práticas</b> ao utilizarmos subscribe do rxjs, devemos
+          importar atribuir a uma variável o tipo <b>Subscription</b>, e no life
+          cicly hook <b>ngOnDestroy</b> aplicar o <b>unsubscribe()</b>, caso
+          contrário ainda ficaríamos inscritos mesmo após o component ser
+          destruído
+        </p>
+        <p>
+          <b
+            >Rotas: Escutando mudanças nos parâmetros de roteamento - Aula 54</b
+          >
+        </p>
+      </section>
+      <hr />
+      <section>
+        <h1>Redirecionamento via código</h1>
+        <p>
+          Para tratamento de erros, podemos redirecionar rotas pelos components,
+          devemos importar injetar a classe <b>Router</b>, está classe tem
+          diversos métodos, porem o de redirecionamento é o
+          .navigate(['/caminho'], parâmetro?)
+        </p>
+        <p>
+          <b>Rotas: Rotas imperativas: Redirecionamento via código - Aula 54</b>
+        </p>
+      </section>
+      <hr />
+      <section>
+        <h1>Definindo e extraindo parâmetros de url(query)</h1>
+        <p>
+          São os parâmetrs de link (url), é uma forma de passar parâmetros
+          opcionais para as rotas, (sem ter que altera-las ou criar outra rota)
+        </p>
+        <p>
+          Devemos adicionar um propertyBinding com
+          <b> [queryParams]="{chave: valor}"</b>, podendo ser dinâmico
+        </p>
+        <p>
+          Tambem podemos nos inscrever no subscribe do e
+          <b>this.route.queryParams.subscribe</b> para passar o valor do query
+          params para um atributo, e navegar entre as rotas através de um botão
+          passando o navigate com o atributo como valor do query params do
+          atributo que recebemos o query params.
+          <b
+            >this.router.navigate(['/cursos'], { queryParams: { pagina:
+            ++this.pagina }, })</b
+          >
+        </p>
+      </section>
+      <hr />
+      <section>
+        <h1>Criando um módulo de rotas e módulo de funcionalidades</h1>
+        <p>
+          Podemos e devemos criar e estruturar nossos projetos com módulos, para
+          não poluir o módulo principal <b>app-module.ts</b> nem o module de
+          rotas <b>app-routing.module.ts</b>, em cada component que vamos ter
+          mais de um component filho, definimos um module, dentro dele todas as
+          definições necessária como ja visto antes.
+        </p>
+        <p>
+          Para criar um módulo de rotas, devemos importar e exportar o
+          <b>RouterModule</b>, dentro do decorator do <b>@NgModule</b> que
+          tambem deve ser importado, muito importe muito importante declarar
+          como <b>.forChild(minhaRoute)</b>, declarar a const <b>minhaRoute</b>,
+          com o tipo <b>Route</b> e um array de objetos com os paths os
+          components e seus imports.
+        </p>
+        <p>
+          Nosso router module, vai ser importado no module do component
+          principal, que será importado como module no <b>app.module.ts</b>
+        </p>
+      </section>
+    </section>
   </body>
 </html>

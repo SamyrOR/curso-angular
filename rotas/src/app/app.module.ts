@@ -9,11 +9,20 @@ import { CursosService } from './cursos/cursos.service';
 import { AuthService } from './login/auth.service';
 import { FormsModule } from '@angular/forms';
 import { AuthGuard } from './guards/auth.guard';
+import { CursoGuard } from './guards/curso.guard';
+import { AlunosGuard } from './guards/alunos.guard';
+import { AlunoDetalheResolver } from './guards/aluno-detalhe.resolver';
 
 @NgModule({
   declarations: [AppComponent, HomeComponent, LoginComponent],
   imports: [BrowserModule, AppRoutingModule, FormsModule],
-  providers: [CursosService, AuthService, AuthGuard],
+  providers: [
+    CursosService,
+    AuthService,
+    AuthGuard,
+    CursoGuard,
+    AlunoDetalheResolver,
+  ],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

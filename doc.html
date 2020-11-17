@@ -1262,6 +1262,137 @@
           guarda, ex <b>canActivate</b> e o qual o guarda será usado,
           <b>canActivate:[AuthGuard]</b>, então a rota passará a ser protegida!
         </p>
+        <p>
+          <b>Rotas: Usando guarda de rotas: CanActivate- Aula 64</b>
+        </p>
+      </section>
+      <hr />
+      <section>
+        <h1>CanActivateChild</h1>
+        <p>
+          O Procedimento basicamente é o mesmo do guarda <b>CanActivate</b>,
+          para casos que um usuário comum não possa acessar alguma rota, a
+          protegemos com o guard e colocamos a lógica, com o Child é para rotas
+          filhas, ou seja, podemos alem do guarda principal ter um guarda para
+          as rotas filhas
+        </p>
+        <p>
+          Para isso criamos um guard <b>CanActivateChild</b> e adicionamos ele
+          ou no escopo global, para que nem a rota seja acessada, ou apenas no
+          escopo da rota, dentro do seu module e seu routing module, para que
+          somente as suas filhas não seja acessada
+        </p>
+        <p>
+          <b>Rotas: Usando guarda de rotas: CanActivateChild - Aula 65</b>
+        </p>
+      </section>
+      <hr />
+      <section>
+        <h1>CanDeactivate</h1>
+        <p>
+          O guarda de rota <b>CanDeactivate</b> nos permite ao contrario do
+          canActivate, que permite o acesso via autenticação, o
+          <b>CanDeactivate</b> pode resguardar o usuário de sair da rota sem
+          querer, muito útil para preenchimento de formulários e páginas que
+          precisam de edição, e caso o usuário saia perca tudo, o
+          <b>CanDeactivate</b> pode ser programado para que haja um confirmação
+          para que o usuário não saia sem perder informações.
+        </p>
+        <p>
+          Para isso criamos a rota do <b>CanDeactivate</b> e temos que passar
+          para a rota, o <b> component como tipo</b> e na chave
+          <b>component</b>, após isso, importar no provider modulo que será
+          usado e adicionar a chave <b>canDeactivate</b> com o guarda dentro do
+          array, <b>canDeactivate: [MeuDeactivateGuard]</b>
+        </p>
+        <p>
+          E como o deactivate tem acesso ao component, podemos dentro do
+          component definir a lógica de confirmação e retornar dentro do guarda
+        </p>
+        <p>
+          <b>Rotas: Usando guarda de rotas: CanDeactivate - Aula 66</b>
+        </p>
+      </section>
+      <hr />
+      <section>
+        <h1>Deixando o CanDeactivate genérico</h1>
+        <p>
+          Quando utilizamos o <b>CanDeactivate</b> devemos passar um component
+          como tipo e na chave component, porem fica muito restrito, caso temos
+          mais de um formulário para utilizar o guarda
+        </p>
+        <p>
+          Para resolver este impasse, podemos criar uma interface, com um método
+          especifico, que todo component que desejar usar o guarda, deve
+          implementar a interface, e dentro do nosso guarda, devemos no tipo e
+          no component, informar a interface
+        </p>
+        <p>
+          <b
+            >Rotas: Usando guarda de rotas: CanDeactivate com interface
+            genérica- Aula 67</b
+          >
+        </p>
+      </section>
+      <hr />
+      <section>
+        <h1>Resolver: carregando dados da rota antes da rota ser ativada</h1>
+        <p>
+          Com um <b>resolver</b> podemos carregar dados da rota, antes mesmo
+          dela ser renderizada, pois os dados em si, só são carregados
+          posteriormente, muito útil em grandes aplicação com requisições
+          assíncronas
+        </p>
+        <p>
+          Para utilizar o resolver, primeiramente criamos o arquivo, é muito
+          similar a uma rota, e dentro do
+          <b>implementes Resolve< objeto ></b> passamos a interface do objeto
+          que desejamos carregar como tipo, e dentro do próprio resolver fazemos
+          a lógica para recuperar e retornar o objeto
+        </p>
+        <p>
+          Dentro do <b>routing-module</b> adicionamos mais um atributo a rota o
+          <b>resolve: {nomeObjeto: MeuResolver}</b>, atenção, o primeiro item é
+          o nome que vai ser possível recuperar o objeto dentro do component
+          através do
+          <b>this.route.data.subscribe((obj) => { this.aluno = obj.aluno;</b>
+        </p>
+        <p>
+          <b
+            >Rotas:Resolve: carregando dados antes da rota ser ativada- Aula
+            68</b
+          >
+        </p>
+      </section>
+      <hr />
+      <section>
+        <h1>CanLoad</h1>
+        <p>
+          Ao acessar nossa aplicação, após algum acesso, carregamos o modulo do
+          arquivo, quando não temos mais acesso, pode ocorrer que o arquivo seja
+          carregado mesmo sem o acesso
+        </p>
+        <p>
+          Para proteger ainda mais o código da nossa operação, podemos utilizar
+          o <b>CanLoad</b>, tambem é um guarda de rotas, que pode verificar se o
+          usuário tem acesso ou não, e caso não tenha não carrega o arquivo.
+          Muito similar a um <b>AuthGuard com CanActive</b>
+        </p>
+        <p>
+          E para utiliza-lo tambem adicionamos uma chave na rota com
+          <b>canLoad: [CanLoadGuard]</b>
+        </p>
+        <p>
+          Podemos tambem utilizar mais de um método de rotas, dentro de um
+          arquivo de rotas, e tambem devemos utilizar a rota <b>canLoad</b>, nos
+          arquivos de rotas que tem lazy-loading
+        </p>
+        <p>
+          <b
+            >Rotas: CanLoad: como não carregar o módulo sem permissão - Aula
+            69</b
+          >
+        </p>
       </section>
     </section>
   </body>

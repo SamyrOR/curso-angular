@@ -22,7 +22,6 @@ export class AuthService {
   }
 
   usuarioEstaAutenticado(): boolean {
-    console.log('pçá');
     return this.usuarioAut;
   }
 }

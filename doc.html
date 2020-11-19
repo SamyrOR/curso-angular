@@ -1394,6 +1394,183 @@
           >
         </p>
       </section>
+      <hr />
+      <section>
+        <h1>Definindo rota padrão e wildcard</h1>
+        <p>
+          Quando informamos uma página que não existe em nenhum dos nossos
+          módulos de rota, na barra de endereço, o angular quebra pois ele
+          verifica rota por rota dentro da ordem e quebra se não encontrar
+          nenhuma correspondente
+        </p>
+        <p>
+          Para definir uma rota de página não encontrada (capturando qualquer
+          rota que não esteja disponível e direcionar para um página de 404),
+          basta criar um component para a exibir a página de erro e adicionar a
+          rota: <b>{ path: '**', component: PaginaNaoEncontradaComponent }</b>,
+          no <b>path:</b> adicionamos <b>**</b> pois equivale a qualquer valor
+          que não seja uma das rotas, por isso a rota de vazia de home e a de
+          erro devem ser as últimas
+        </p>
+        <p>
+          Para definir uma rota padrão, podemos usar a chave
+          <b>redirectTo: '/rota'</b> e o <b>patchMatch: 'full'</b>, o redirect
+          indica que ao ser acessada a rota, deve ser redirecionada para a
+          informada, e o patchMatch: basicamente informa se deve pegar todo o
+          nome da rota, ou somente o prefixo, no exemplo por ser rota vazia deve
+          ser full, mas para casos em que temos rotas filhas, usamos
+          <b>prefix</b>
+        </p>
+        <p>
+          <b
+            >Rotas: definindo rota padrão e wildcard (rota não encontrada) -
+            Aula 70</b
+          >
+        </p>
+      </section>
+      <hr />
+      <section>
+        <h1>HTML5 ou #</h1>
+        <p>
+          Por padrão, a navegação entre páginas HTML usa apenas a /, porem
+          algumas linguagens de back end, podem não reconhecer o padrão e bugar
+          a aplicação, o angular nos da a opção de usar #, facilitando assim a
+          comunicação com essas linguagens
+        </p>
+        <p>
+          Basta que no import do arquivo de rotas, adicionamos um objeto como
+          segundo parâmetro com o <b>{useHash: true}</b>, recebe um boolean
+          podendo ser true ou false, no caso true habilitará a hash nas rotas
+        </p>
+        <p>
+          <b>Rotas: Estilo de url: HTML5 ou usando # - Aula 71</b>
+        </p>
+      </section>
+    </section>
+    <hr />
+    <hr />
+    <section>
+      <h1>Formulários Template Driven</h1>
+      <p>Template Drive vs Data Driven</p>
+      <p>
+        Os formulários que são <b>template driven</b> sãos os que possuem o
+        código e validação dentro do próprio HTML com diretivas, etc, e
+        necessitam do ngSubmit para serem enviados
+      </p>
+      <p>
+        Já os formulários <b>data driven</b>, possuem o HTML como esqueleto
+        apenas para estrutura do form, porem todo dado é manipulado e tratado e
+        validado dentro do component sem a necessidade do ngSubmit, tabem
+        chamados de formularios reativos
+      </p>
+      <p>
+        Devemos sempre importar o <b>FormsModule</b> para o modulo em que se
+        encontra nosso component que contem o formulario
+      </p>
+      <p>
+        <b
+          >Formulários Template Driven: E (template vs data / reativo)
+          Introdução - Aula 72</b
+        >
+      </p>
+      <hr />
+      <section>
+        <h1>Controles ngForm, ngSubmit e ngModel</h1>
+        <p>
+          Para informamos para o Angular que estamos trabalhando com um form
+          template driven, devemos usar criar uma várivale local na tag que
+          inicia o form, do tipo que recebe um ngForm <b>#exemplo="ngForm"</b>
+        </p>
+        <p>
+          Para que alguma ação de execução seja excecutada no form, adicionamos
+          o event <b>(ngSubmit)="onEnvio(exemplo)"</b> passando o metodo que
+          contem a lógica para envio, e o form com a váriavel local criada
+        </p>
+        <p>
+          E para indicar cada elemento do form, adicionamos um a propriedade
+          <b>name="nomeDoIput"</b> e o <b>ngModel</b> então nosso form será
+          construido com o objeto nomeado e o valor informado
+        </p>
+        <p>
+          <b
+            >Formulários Template Driven: Controles ngForm, ngSubmit e ngModel -
+            Aula 74</b
+          >
+        </p>
+      </section>
+      <hr />
+      <section>
+        <h1>Iniciando valores com ngModel two-way data-binding</h1>
+        <p>
+          Para iniciar o form com valores já nele, criar um objeto com os campos
+          que desejamos iniciar no component, ja contendo os valores, e dentro
+          do form, adicionamos o two-way data-binding dentro no <b>ngModel</b> e
+          passamos o objeto e as chaves para o campo
+        </p>
+        <p>
+          <b>[(ngModel)]="meuForm.email"</b> e ele receberá o valor que está
+          declarado no component, e como é two-way data-binding, ele receberá o
+          valor quando o form for submetido
+        </p>
+        <p>
+          Caso não desejamos que o valor do objeto seja modifciado, podemos
+          utilziar apenas o properti bidng
+        </p>
+        <p>
+          <b
+            >Formulários Template Driven: Inicializando valores com ngModel
+            (two-way data-binding) - Aula 75</b
+          >
+        </p>
+      </section>
+      <hr />
+      <section>
+        <h1>Aplicando validação nos campos</h1>
+        <p>
+          Dentro do prprio input podemos aplicar validadores para o form, alguns
+          do angular são:
+        </p>
+        <p><b>required</b> o campo é obrigatório</p>
+        <p><b>email</b> o valor inserido deve ser um email valido</p>
+        <p><b>minLength="2"</b> tamanho minimo do campo</p>
+        <p><b>maxLength="3"</b> tamanho máximo do campo</p>
+        <p>
+          <b>pattern="[a-zA-Z]"</b> define um tipo de validação recebida de uma
+          RegEx
+        </p>
+        <p>
+          <b
+            >Formulários Template Driven: Aplicando validação nos campos - Aula
+            77</b
+          >
+        </p>
+      </section>
+      <hr />
+      <section>
+        <h1>Aplicando CSS na validação nos campos</h1>
+        <p>
+          O angular, aplica 6 classes para o formulario e cada input de acordo
+          com cntrole:
+        </p>
+        <p><b>ng-untouched</b> o input não foi visitado</p>
+        <p><b>ng-touched</b> o input foi visitado</p>
+        <p><b>ng-pristine</b> o valor do input não mudou</p>
+        <p><b>ng-dirty</b> o valor do input mudou</p>
+        <p><b>ng-valid</b> o input é valido</p>
+        <p><b>ng-invalid</b> o input é invalido</p>
+      </section>
+      <p>
+        Permitindo assim, que através do CSS do component, consigamos alterar o
+        CSS do input personalizamos o CSS dela dentro do component.css, e caso o
+        input receba a classe <b>ng-invalid</b>, receberá o estilo declarado
+        para a classe
+      </p>
+      <p>
+        <b
+          >Formulários Template Driven: Aplicando CSS na validação dos campos -
+          Aula 78</b
+        >
+      </p>
     </section>
   </body>
 </html>

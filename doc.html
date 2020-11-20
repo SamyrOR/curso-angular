@@ -1550,7 +1550,7 @@
         <h1>Aplicando CSS na validação nos campos</h1>
         <p>
           O angular, aplica 6 classes para o formulario e cada input de acordo
-          com cntrole:
+          com controle:
         </p>
         <p><b>ng-untouched</b> o input não foi visitado</p>
         <p><b>ng-touched</b> o input foi visitado</p>
@@ -1558,19 +1558,87 @@
         <p><b>ng-dirty</b> o valor do input mudou</p>
         <p><b>ng-valid</b> o input é valido</p>
         <p><b>ng-invalid</b> o input é invalido</p>
+        <p>
+          Permitindo assim, que através do CSS do component, consigamos alterar
+          o CSS do input personalizamos o CSS dela dentro do component.css, e
+          caso o input receba a classe <b>ng-invalid</b>, receberá o estilo
+          declarado para a classe
+        </p>
+        <p>
+          <b
+            >Formulários Template Driven: Aplicando CSS na validação dos campos
+            - Aula 78</b
+          >
+        </p>
       </section>
-      <p>
-        Permitindo assim, que através do CSS do component, consigamos alterar o
-        CSS do input personalizamos o CSS dela dentro do component.css, e caso o
-        input receba a classe <b>ng-invalid</b>, receberá o estilo declarado
-        para a classe
-      </p>
-      <p>
-        <b
-          >Formulários Template Driven: Aplicando CSS na validação dos campos -
-          Aula 78</b
-        >
-      </p>
+      <hr />
+      <section>
+        <h1>Mostrando mensagens de erro de validação</h1>
+        <p>
+          Com o template driven, para mostrarmos mensagens de erro na tela,
+          utilziamos o
+          <b>[ngClass]="{'class1' , 'class2', 'class3': validaçãoaqui}"</b>, que
+          indica que tais classes serão aplicadas de acordo com a validação,
+          podemos validar através dos controles presents no inputs, que possuem
+          os memos nomes das classses listadas acima, para isso, tambem devemos
+          declarar uma variavel local do input recebendo o ngModel.
+          #campoNome="ngModel", assim nos dá acesso ao constroles. e através
+          deles conseguimos adicionar as classes, que a maioria das bibliotecas
+          CSS possuem.
+        </p>
+        <p>
+          Podemos tambem declarar uma div logo abaixo do input para a declaração
+          de um texto caso o input seja invalido
+        </p>
+        <p>
+          <b
+            >Formulários Template Driven: Mostrando mensagens de erro de
+            validação - Aula 79</b
+          >
+        </p>
+      </section>
+      <hr />
+      <section>
+        <h1>Desabilitando o botão de submit para formulário inválido</h1>
+        <p>
+          Quando nosso formulário estiver inválido, não queremos que o botão de
+          enviar esteja disponível, para isto, bata adicionar a property binding
+          <b>[disabled]="form.invalid"</b> passando a validação do do controle
+          .invalid da variável local do nosso form, em caso de true o botão não
+          será apresentado.
+        </p>
+        <p>
+          <b
+            >Formulários Template Driven: Desabilitando o botão de submit para
+            formulário inválido - Aula 80</b
+          >
+        </p>
+      </section>
+      <hr />
+      <section>
+        <h1>*DICA Debugando o Form</h1>
+        <p>
+          Quando trabalhamos com formulários, para deixar mais pratico o debug
+          durante o desenvolvimento, no angular, podemos criar um novo
+          component, que recebe um atributo form passado por input, o declaramos
+          no component do form a ser debugado através do seu template e passamos
+          com property binding o form, para a váriavel que recebe o input,
+          dentro do component de debug, declaramos por interpolação os dados do
+          form recebido que desejamos verificar como:
+        </p>
+        <p>Validade do formulario <b>{{form.valid}}</b></p>
+        <p>Se foi enviado ou não <b>{{form.submitted}}</b></p>
+        <p>
+          Valores do form e neste, recebemos um objeto e então usamos o pipe do
+          JSON para visualizaçõ do conteudo <b>{{form.value | json}}</b>
+        </p>
+        <p>
+          <b
+            >Formulários *DICA Verificando dados do Form no template com JSON-
+            Aula 81</b
+          >
+        </p>
+      </section>
     </section>
   </body>
 </html>

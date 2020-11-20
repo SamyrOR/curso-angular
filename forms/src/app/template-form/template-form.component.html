@@ -1,28 +1,145 @@
 <form #f="ngForm" (ngSubmit)="onSubmit(f)">
-  <div class="form-group">
-    <label for="nome">Nome</label>
-    <input
-      type="text"
-      class="form-control"
-      id="nome"
-      placeholder="Nome"
-      name="nome"
-      [(ngModel)]="usuario.nome"
-      required
-    />
+  <div class="form-row">
+    <div class="form-group col-12">
+      <label for="nome">Nome</label>
+      <input
+        [ngClass]="{ 'is-invalid': !nome.valid && nome.touched }"
+        type="text"
+        class="form-control"
+        id="nome"
+        placeholder="Nome"
+        name="nome"
+        [(ngModel)]="usuario.nome"
+        required
+        #nome="ngModel"
+      />
+      <div class="invalid-feedback">O Nome é obrigatório</div>
+    </div>
+    <div class="form-group col-12">
+      <label for="email">Email</label>
+      <input
+        [ngClass]="{ 'is-invalid': !email.valid && email.touched }"
+        type="email"
+        class="form-control"
+        id="nome"
+        placeholder="email@email.com"
+        name="email"
+        [(ngModel)]="usuario.email"
+        required
+        email
+        #email="ngModel"
+      />
+      <div class="invalid-feedback">O email é obrigatório</div>
+    </div>
+    <div class="form-group col-3">
+      <label for="cep">CEP</label>
+      <input
+        [ngClass]="{ 'is-invalid': !cep.valid && cep.touched }"
+        type="text"
+        class="form-control"
+        id="cep"
+        name="cep"
+        [(ngModel)]="usuario.cep"
+        ngModel
+        required
+        #cep="ngModel"
+      />
+      <div class="invalid-feedback">O CEP é obrigatório</div>
+    </div>
+    <div class="form-group col-3">
+      <label for="numero">Número</label>
+      <input
+        [ngClass]="{ 'is-invalid': !numero.valid && numero.touched }"
+        type="text"
+        class="form-control"
+        id="numero"
+        name="numero"
+        [(ngModel)]="usuario.numero"
+        ngModel
+        required
+        #numero="ngModel"
+      />
+      <div class="invalid-feedback">O Número é obrigatório</div>
+    </div>
+    <div class="form-group col-6">
+      <label for="complemento">Complemento</label>
+      <input
+        type="text"
+        class="form-control"
+        id="complemento"
+        name="complemento"
+        [(ngModel)]="usuario.complemento"
+        ngModel
+        required
+        #complemento="ngModel"
+      />
+    </div>
+    <div class="form-group col-12">
+      <label for="rua">Rua</label>
+      <input
+        [ngClass]="{ 'is-invalid': !rua.valid && rua.touched }"
+        type="text"
+        class="form-control"
+        id="rua"
+        name="rua"
+        [(ngModel)]="usuario.rua"
+        required
+        #rua="ngModel"
+        readonly
+      />
+      <div class="invalid-feedback">A Rua é obrigatório</div>
+    </div>
+    <div class="form-group col-5">
+      <label for="bairro">Bairro</label>
+      <input
+        [ngClass]="{ 'is-invalid': !bairro.valid && bairro.touched }"
+        type="text"
+        class="form-control"
+        id="bairro"
+        name="bairro"
+        [(ngModel)]="usuario.bairro"
+        ngModel
+        required
+        #bairro="ngModel"
+        readonly
+      />
+      <div class="invalid-feedback">O Bairro é obrigatório</div>
+    </div>
+    <div class="form-group col-4">
+      <label for="cidade">Cidade</label>
+      <input
+        [ngClass]="{ 'is-invalid': !cidade.valid && cidade.touched }"
+        type="text"
+        class="form-control"
+        id="cidade"
+        name="cidade"
+        [(ngModel)]="usuario.cidade"
+        ngModel
+        required
+        readonly
+        #cidade="ngModel"
+      />
+      <div class="invalid-feedback">O Cidade é obrigatório</div>
+    </div>
+    <div class="form-group col-3">
+      <label for="estado">Estado</label>
+      <input
+        [ngClass]="{ 'is-invalid': !estado.valid && estado.touched }"
+        type="text"
+        class="form-control"
+        id="estado"
+        name="estado"
+        [(ngModel)]="usuario.estado"
+        ngModel
+        required
+        #estado="ngModel"
+        readonly
+      />
+      <div class="invalid-feedback">O Estado é obrigatório</div>
+    </div>
   </div>
-  <div class="form-group">
-    <label for="email">Email</label>
-    <input
-      type="email"
-      class="form-control"
-      id="nome"
-      placeholder="email@email.com"
-      name="email"
-      [(ngModel)]="usuario.email"
-      required
-      email
-    />
-  </div>
-  <button type="submit" class="btn btn-primary">Enviar</button>
+  <button type="submit" class="btn btn-primary" [disabled]="f.invalid">
+    Enviar
+  </button>
+  <app-form-debug [form]="f"></app-form-debug>
 </form>

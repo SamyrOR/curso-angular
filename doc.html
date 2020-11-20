@@ -1639,6 +1639,95 @@
           >
         </p>
       </section>
+      <hr />
+      <section>
+        <h1>Aninhamento de dados</h1>
+        <p>
+          Podemos aninhar/agrupar dados do nosso formulario (criar objetos
+          dentro de objetos) para facilitar o a busca e separa-los para melhor
+          entendimento, e para isto, basta que adicionemos no elemento container
+          o
+          <b
+            >ngModelGroup="nomeDoObjeto" que será criado um objeto e todo o form
+            dentro dele faram parte dele, e podem ser aninhado mais de um
+            <b>ngModelGroup</b></b
+          >
+        </p>
+        <p>
+          <b
+            >Formulários: Template Drive: Form groups (agrupando dados) - Aula
+            84</b
+          >
+        </p>
+      </section>
+      <hr />
+      <section>
+        <h1>Adicionando evento ao element e recuperando via http o CEP</h1>
+        <p>
+          Podemos por eventos, passar valores como parâmetros de metodos do
+          nosso component, e dentro do component tratar esses valores, como
+          realizar um solicitação via http, para um server
+        </p>
+        <p>
+          <b
+            >Formulários: Pesquisando endereço automaticamente com CEP - Aula
+            85</b
+          >
+        </p>
+      </section>
+      <hr />
+      <section>
+        <h1>Populando campos do form</h1>
+        <p>
+          Para adicionar de forma automatica um valores para campos dos
+          formulários de forma dinamica, ao receber o obejto, devemos receber o
+          fomulário e podemos utilizar o <b>.setValue({})</b> passando como
+          objeto os campos do form e o valor que irão receber
+        </p>
+        <p>
+          Poremo o <b>setValue()</b> reseta o valor do formulário, se ja havia
+          algum campo informado, por isso o uso mais indicado é o
+          <b>patchValue({})</b>
+        </p>
+        <p>
+          A forma de utilizar é a mesma, este metodo popula apenas os campos com
+          os valores informados, sem alterar outros campos ja preenchidos
+        </p>
+        <p>
+          <b
+            >Formulários: Template Driven: Populando campos com setValue e patchValue
+            (autocomplete CEP) - Aula 86</b
+          >
+        </p>
+      </section>
+      <hr />
+      <section>
+        <h1>Submeter o formulário</h1>
+        <p>
+          Para submeter o formulario devemos ter um metodo que receba o
+          formulário, dentro dele realizamos as operações com o HTTP post
+        </p>
+        <p>
+          <b>
+            onSubmit(form) { this.http .post('https://httpbin.org/post',
+            JSON.stringify(form.value)) .subscribe((dados) =>
+            console.log(dados)); }</b
+          >
+        </p>
+        <p>
+          Neste caso o valor formulário é um objeto javascript e para
+          transfora-lo em JSON, que é o mais trabalhado com JS, usamos o metodo
+          <b>JSON.stringfy(form.value)</b> e enviamos ao servidor, podemos
+          tambem dar subscribe para receber o retorno da requisição se foi
+          concluida com sucesso ou não.
+        </p>
+        <p>
+          <b
+            >Formulários: Template Driven: Submetendo valores com HTTP POST
+            (autocomplete CEP) - Aula 87</b
+          >
+        </p>
+      </section>
     </section>
   </body>
 </html>

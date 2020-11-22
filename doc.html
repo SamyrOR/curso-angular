@@ -1695,8 +1695,8 @@
         </p>
         <p>
           <b
-            >Formulários: Template Driven: Populando campos com setValue e patchValue
-            (autocomplete CEP) - Aula 86</b
+            >Formulários: Template Driven: Populando campos com setValue e
+            patchValue (autocomplete CEP) - Aula 86</b
           >
         </p>
       </section>
@@ -1726,6 +1726,208 @@
             >Formulários: Template Driven: Submetendo valores com HTTP POST
             (autocomplete CEP) - Aula 87</b
           >
+        </p>
+      </section>
+    </section>
+    <hr />
+    <hr />
+    <section>
+      <h1>Formulários Data Driven</h1>
+      <p>
+        Os formulários <b>Data Driven</b>, so formulários que todo o código dos
+        dados e validação está no próprio component, diferente do
+        <b>template driven</b>, sendo o <b>data driven</b> mais usado e
+        recomendado por todos para criaçãos dos forms, devido a facilidade de
+        manutenção e escalabilidade.
+      </p>
+      <p>
+        <b>Formulários: Data Driven: Introdução - Aula 88</b>
+      </p>
+      <hr />
+      <section>
+        <h1>Criando o form com código Angular</h1>
+        <p>
+          Para criação do formulário, no modulo que comporta o mesmo, devemos
+          impotar alem do <b>FormsModule</b> o <b>ReactiveForms</b>, e dentro do
+          component criamos a variável que receberá os dados do nosso form.
+        </p>
+        <p>
+          Inicializamos a inclusão dos dados no
+          <b>ngOnInit(){this.formulário}</b> podemos indicar que o nosso
+          formulário é <b>this.formulario = new FormGroupp ({})</b> que é um
+          objeto, e dentro dele, declaramos as chaves do form, e os valores
+          recebem um <b>new FormControl(valor)</b>, porem para ser menos
+          verboso, caso temos um formulário com muitos dados, podemos injetar o
+          <b>FormBuilder </b>como dependência no constructor, e importa-lo no
+          component.
+        </p>
+        <p>
+          Com o <b>formBuilder</b> iniciamos o form com
+          <b>this.formulario = this.formBuilder.group({})</b> e dentro dele
+          declaramos a chave, e o valor agora recebe um array com os parâmetros.
+          <b>nome: [valor],</b>
+        </p>
+        <p>
+          <b
+            >Formulários: Data Driven: Criando um form com código Angular - Aula
+            90</b
+          >
+        </p>
+      </section>
+      <hr />
+      <section>
+        <h1>Sincronizando o temaplate do form, com a variável</h1>
+        <p>
+          Para atribuir o formulário a váriavel do form e os inputs as chaves do
+          formulário, na tag do form, usamos a diretiva
+          <b>[formGroup]="formulario"</b> passando a variável do formulário
+        </p>
+        <p>
+          E pera passar os inputs para as chaves, na tag do input, usamos a
+          <b>formControlName="nomeDaChave"</b> passamos o nome do modo em que se
+          contra no nosso formulárop
+        </p>
+        <p>
+          <b
+            >Formulários: Data Driven: Sincronizando HTML com FormGroup - Aula
+            91</b
+          >
+        </p>
+      </section>
+      <hr />
+      <section>
+        <h1>Fazendo submit com data driven</h1>
+        <p>
+          Com o formulário data driven, usamos o event
+          <b>(ngOnSubmit)="metodoDeEnvio()"</b> diferente do template driven não
+          passamos o formulário, pois ele ja se encontra no component, e dentro
+          do component fazemos a lógica do submit, com o this.formulario
+        </p>
+        <p>
+          <b>Formulários: Data Driven: Fazendo bubmit - Aula 92</b>
+        </p>
+      </section>
+      <hr />
+      <section>
+        <h1>Resetando o form</h1>
+        <p>
+          Para resetar o formulário <b>data driven</b> devemos criar um metodo,
+          e dentro dele executar um <b>this.formulario.reset()</b> que reseta
+          todos os campos
+        </p>
+        <p>
+          Podemos executar esse procedimento dentro do subcribe e restar quando
+          o forumlário é enviado com sucesso, e tambem adicionar algum botão
+          para cancelar que o reseta
+        </p>
+        <p>
+          <b>Formulários: Data Driven: Resetando o form- Aula 93</b>
+        </p>
+      </section>
+      <hr />
+      <section>
+        <h1>Aplicando validação nos campos</h1>
+        <p>
+          No data driven, para aplicar a validação nos campos, dentro do
+          compoenent diretamente no array de valor, importamos o
+          <b>Validators</b> tambem do angular forms, podendo ser apenas um
+          validação e no caso de mais que uma, passar como array.
+        </p>
+        <p>
+          nome: [ valor,
+          <b
+            >[ Validators.required, Validators.minLength(3),
+            Validators.maxLength(20), ]</b
+          >, ],
+        </p>
+        <p>
+          <b
+            >Formulários: Data Driven: Aplicando validação nos campos- Aula 94
+          </b>
+        </p>
+      </section>
+      <hr />
+      <section>
+        <h1>ACesso ao FormControl no HTML para aplicar CSS de validação</h1>
+        <p>
+          Para aplicar CSS de validação no formulário, de acordo com o seu
+          framework, temos as classes, a validação fica no component, nele
+          pegamos o campo de acordo com o passado dentro do HTML, passamos como
+          string <b>validaCampo('nomeDoCampo')</b>, e dentro component recebemos
+          o campo com o <b>this.formulario.get(nomeDoCampo)</b> que tem como
+          retorno o o campo, e atraés dele, conseguimos acessar os controls e
+          receber o boolean de acordo com a validação
+          <b>valid, touched, pristine</b>
+          e no HTML temos o <b>[ngClass]={'classe': validaCampo(nomeDoCampo)</b>
+        </p>
+        <p>
+          <b
+            >Formulários: Data Driven: Acesso ao FormControl no HTML e CSS de
+            validação dos campos - Aula 95
+          </b>
+        </p>
+      </section>
+      <hr />
+      <section>
+        <h1>Agrupando dados</h1>
+        <p>
+          Com o fomulário reativo, para agrupar dados, declaramos a chave e como
+          valor, tambem adicionamos o
+          <b>grupo2: this.formBuilder.group({})</b> e passamos dentro do objeto
+          os controls que vão pertencencer ao grupo, e atenção que agora os
+          atributos do grupo2 devem ser chamados conforme,
+          <b>formulario.grupo2.valor1</b>
+        </p>
+        <p>
+          <b
+            >Formulários: Data Driven: Form groups (agrupando dados)- Aula 97
+          </b>
+        </p>
+      </section>
+      <hr />
+      <section>
+        <h1>Auto populando com setValue e pathValeu</h1>
+        <p>
+          Funciona da mesma maneira que o template driven,
+          <b>patchValue</b> popula diversos inputs sem afetar outros campos, e o
+          setValue é recomendado quando desejamos popular apenas um campo
+        </p>
+        <p>
+          <b
+            >Formulários: Data Driven: Autopopulando endereço com CEP (setValue
+            e patchValue) - Aula 98
+          </b>
+        </p>
+      </section>
+      <hr />
+      <section>
+        <h1>Verificar campos com o botão submit</h1>
+        <p>
+          Para realizarmos a verificação do campo quando o submit é clicado, se
+          estivar valido realizamos o envio, senão iteramos sobre cada elemento
+          do form e verificamos qual está invalido.
+        </p>
+        <p>
+          Para isto criamos um metodo que recebe como parametro o formulario,
+          dentro dometodo utilizamos o
+          <b>Objecti.keys(formulario.controls).forEach</b> pois assim
+          conseguimos iterar sobre cada campo do formularios, ao iterar ,
+          adicionamos um <b>.markAsDirty()</b>, pois assim os campos que estão
+          invalidos teram a mensagem de err exibida na tela, devemos tambem
+          adicionar um
+          <b>
+            if(campo instanceof FormGroup){invocar o metodo passando o campo}
+          </b>
+          que caso um dos campos seja um aninhador para outros campos, invocamos
+          o metodo que valida passando o campo que aninha os outrs, sendo assim,
+          independentemente de termos varios niveis em nosso form, ele será
+          validado
+        </p>
+        <p>
+          <b
+            >Formulários: Data Driven: Verificar validação dos campos com botão
+            submit - Aula 99
+          </b>
         </p>
       </section>
     </section>

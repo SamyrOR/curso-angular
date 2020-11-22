@@ -140,9 +140,9 @@
         <div class="invalid-feedback">O Estado é obrigatório</div>
       </div>
     </div>
+    <button type="submit" class="btn btn-primary" [disabled]="f.invalid">
+      Enviar
+    </button>
   </div>
-  <button type="submit" class="btn btn-primary" [disabled]="f.invalid">
-    Enviar
-  </button>
-  <app-form-debug [form]="f"></app-form-debug>
 </form>
+<app-form-debug [form]="f"></app-form-debug>

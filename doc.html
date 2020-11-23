@@ -1930,6 +1930,89 @@
           </b>
         </p>
       </section>
+      <hr />
+      <section>
+        <h1>DRY: Refatorando o código</h1>
+        <p>
+          Quando temos código que é repetido, devemos criar serviços para o
+          mesmo, para evitar repetições, e apatir do angular 6+, dentro dos
+          nossos services, temos a chave <b>provideIn: 'root'</b>, que faz com
+          que não precisemos declarar mais os services dentro dos
+          <b>providers: []</b> dos modules, pois o proprie angular está
+          inteligente o suficiente para entender aonde o service está sendo
+          importado.
+        </p>
+        <p>
+          <b
+            >Formulários: Data Driven: Serviço de consulta CEP + provideIn -
+            Aula 100
+          </b>
+        </p>
+      </section>
+      <hr />
+      <section>
+        <h1>Observables e | async</h1>
+        <p>
+          Sempre que trabalharmos com variáveis que são observables, devemos
+          utilizar o <b>| async</b> no template, pois evita data leak
+        </p>
+        <p>
+          <b>Formulários: Data Driven: Combo box simples - Aula 101 </b>
+        </p>
+      </section>
+      <hr />
+      <section>
+        <h1>Objeto como value</h1>
+        <p>
+          Podemos passar como value algum atributo, porem podemos tambem passsar
+          um objeto, porem para isso devemos tomar alguns cuidados como:
+        </p>
+        <p>
+          Ao invés de <b>[value]="valor"</b> no <b>optiion</b>, utilizamos o
+          <b>[ngValue]="objeto"</b>, e dentro do select, utilizamos o
+          <b>[compareWith]="metodoQueRetornaBoolean"</b>, e no nosso metodo,
+          fazemos a comparação
+        </p>
+        <p>
+          <b>return obj1 && obj2 ? obj1.nome === obj2.nome : obj1 === obj2;</b>
+        </p>
+        <p>
+          <b
+            >Formulários: Data Driven: Combobox com Objeto (ngValue e
+            compareWith) - Aula 103
+          </b>
+        </p>
+      </section>
+      <hr />
+      <section>
+        <h1>Seleção multipla em drop down</h1>
+        <p>
+          Para termos seleções multiplas em tags <b>select</b> basta adicionar
+          <b>multiple</b> como proprieade da TAG, e para selecionar mais de um
+          item <b>segurar ctrl</b>
+        </p>
+        <p>
+          <b
+            >Formulários: Data Driven: Combobox Múltiplo (Select Multiple) -
+            Aula 104
+          </b>
+        </p>
+      </section>
+      <hr />
+      <section>
+        <h1>Radio buttons</h1>
+        <p>
+          Devemos trabalhar com radio buttons, por mais que sejam poucos opções,
+          de forma já mais dinâmica pois deixa o código mais interessate, e
+          tambem adicionamos um valor padrão ja direto no FormControl do campo.
+        </p>
+        <p>
+          <b
+            >Formulários: Data Driven: Radio Button (Botão do tipo Rádio) - Aula
+            105
+          </b>
+        </p>
+      </section>
     </section>
   </body>
 </html>

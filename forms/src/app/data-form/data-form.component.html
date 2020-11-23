@@ -95,21 +95,114 @@
       </div>
       <div class="form-group col-3">
         <label for="estado">Estado</label>
-        <input
+        <select
           [ngClass]="aplicaCssErro('endereco.estado')"
           type="text"
           class="form-control"
           id="estado"
           formControlName="estado"
           readonly
-        />
+        >
+          <option *ngFor="let estado of estados | async" [value]="estado.sigla">
+            {{ estado.nome }}
+          </option>
+        </select>
         <div class="invalid-feedback">O Estado é obrigatório</div>
+      </div>
+    </div>
+    <div class="form-group col-3">
+      <label for="cargo">Cargo</label>
+      <select
+        type="text"
+        class="form-control"
+        id="cargo"
+        formControlName="cargo"
+        [compareWith]="comparaObjetos"
+      >
+        <option *ngFor="let cargo of cargos" [ngValue]="cargo">
+          {{ cargo.desc }}
+        </option>
+      </select>
+    </div>
+    <div class="form-group col-3">
+      <label for="tecnologias">Tecnologias</label>
+      <select
+        type="text"
+        class="form-control"
+        id="tecnologias"
+        formControlName="tecnologias"
+        multiple
+      >
+        <option
+          *ngFor="let tecnologia of tecnologias"
+          [value]="tecnologia.nome"
+        >
+          {{ tecnologia.desc }}
+        </option>
+      </select>
+    </div>
+    <div class="form-group col-3">
+      <label for="newsletter">Deseja receber atualizações ?</label>
+      <div id="newsletter" class="ml-2 row">
+        <div class="col-sm-4" *ngFor="let item of newsletterOpt">
+          <label class="radio-inline">
+            <input
+              type="radio"
+              [value]="item.valor"
+              formControlName="newsletter"
+            />
+            {{ item.desc }}
+          </label>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="form-group">
+    <div class="form-check">
+      <input
+        type="checkbox"
+        class="form-check-input"
+        formControlName="termos"
+        [ngClass]="{
+          'is-invalid':
+            !formulario.get('termos').valid ||
+            formulario.get('termos').value === null
+        }"
+      />
+      <label class="form-check-label">Li e aceito os termos</label>
+    </div>
+    <div class="form-group">
+      <div>Frameworks</div>
+      <div
+        class="form-check form-check-inline"
+        formArrayName="frameworks"
+        *ngFor="
+          let item of formulario.get('frameworks')['controls'];
+          let i = index
+        "
+      >
+        <input
+          type="checkbox"
+          class="form-check-input"
+          [formControlName]="i"
+          [ngClass]="{ 'is-invalid': !formulario.get('frameworks').valid }"
+        />
+        <label class="form-check-label">{{ frameworks[i] }}</label>
+      </div>
+      <div class="text-danger" *ngIf="!formulario.get('frameworks').valid">
+        Selecione ao menos um framework
       </div>
     </div>
   </div>
   <button type="submit" class="btn btn-primary">Enviar</button>
-  <button type="button" (click)="resetarForm()" class="btn btn-secondary ml-2">
+  <button type="button" (click)="resetarForm()" class="btn btn-danger ml-2">
     Cancelar
+  </button>
+  <button type="button" (click)="setarCargo()" class="btn btn-info ml-2">
+    Cargo
+  </button>
+  <button type="button" (click)="setarTecnologias()" class="btn btn-info ml-2">
+    Tecnologias
   </button>
 </form>
 <app-form-debug [form]="formulario"></app-form-debug>

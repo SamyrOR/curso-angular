@@ -2013,6 +2013,118 @@
           </b>
         </p>
       </section>
+      <hr />
+      <section>
+        <h1>FormArrays</h1>
+        <p>
+          Os FormArrays geralmente são gerados através de métodos, recebemos o
+          array como valor, e iteramos ele para ser criado como retorno
+          <b>formBuilder.array({valor, validação})</b>, os valores podendo ser
+          mais de um checkbox vão ser retornados no nosso <b>FormControl</b> que
+          está recebendo o array, podemos trabalhar neles usando o
+          <b>
+            *ngFor=" let item of formulario.get('frameworks')['controls']; let i
+            = index "</b
+          >, e tambem <b>{{ frameworks[i] }}</b> fazemos a interpolação passando
+          o idex.
+        </p>
+        <p>
+          Podemos tambem retornar apenas os valores checkados do checkbox com
+        </p>
+        <p>
+          <b
+            >Formulários: Data Driven: FormArray: Checkboxes Dinâmicos - Aula
+            107~108
+          </b>
+        </p>
+      </section>
+      <hr />
+      <section>
+        <h1>Validação customizada</h1>
+        <p>
+          Para formulários reativos podemos criar as nossas próprias validaçãos
+          , como o caso de um CEP invalido, criamos um metodo estatico em outra
+          classe, e nele fazemos uma lógica de validação
+          <b>return validaCep.test(cep) ? null : { cepInvalido: true };</b>,
+          caso o o <b>value</b> do control esteja passe no teste, retornamos
+          null, caso contrario retornamos um objeto com o nome da validação e o
+          boolean de true, pois o objeto foi reprovado.
+        </p>
+        <p>
+          <b
+            >Formulários: Data Driven: Validação Customizada (CEP) - Aula 109
+          </b>
+        </p>
+      </section>
+      <hr />
+      <section>
+        <h1>Validação entre dois campos</h1>
+        <p>
+          Podemos criar uma validação customizada que verifica se os valores
+          entre dois campos são iguais, muito útil para confirmação de e-mail e
+          confirmação de senha
+        </p>
+        <p>
+          Podemos escrever na mão, mas tambem temos bibliotecas como a
+          <b>ng2-validation</b> que já tem váris tipos de validações prontas
+        </p>
+        <p>
+          <b
+            >Formulários: Data Driven: Validação entre dois campos (confirmar
+            email) - Aula 110
+          </b>
+        </p>
+      </section>
+      <hr />
+      <section>
+        <h1>Validações assíncronas</h1>
+        <p>
+          Validações assíncronas, são validações que dependemos do servidor para
+          retornar o valor, e neste caso devemos aguardar para realizar a
+          validação
+        </p>
+        <p>
+          Com o angular podemos criar um service que contate o servidor e
+          verifica o dado, filtramos e retornamos se o dado se encontra no
+          servidor
+        </p>
+        <p>
+          No component, criamos um metodo que recebe o FormControl e faz a
+          chamado do service passando o seu valor para verificação, usamos o
+          <b>.pipe</b> e o <b>.map</b> para realizar uma operador ternário
+          <b
+            >(todos os operadores rxjs devem ser importados e utilizados dentro
+            do .pipe()</b
+          >
+        </p>
+        <p>
+          <b
+            >.pipe( map((emailExiste) => (emailExiste ? { emailInvalido: true }
+            : null)) )</b
+          >
+        </p>
+        <p>
+          Nestá validação e se o email for existente, retornamos a validação com
+          nome e valor, dentro do <b>FormControl</b>, o terceiro parâmetro são
+          validações assincronas e nela passamos nosso método com
+          <b>.bind(this)</b>, fazendo a bind com o nosso component, e no
+          template do component, realizamos as verificações com o próprio ngIf
+          <b>*ngIf="formulario.get('email').status === 'PENDING'"</b> o próprio
+          formControl possui o metodo <b>.status</b> que retorna o status que
+          retorn o status da validação do control sendo
+          <b>VALID, INVALID, PENDING, DISABLED</b>, o pending informa se ainda
+          está sendo válidado
+        </p>
+        <p>
+          Importante ressaltar que deve ser colocado o operador
+          <b>delay(milisegundos)</b> no inicio do servico para que o mesmo não
+          faça requisições a cada novo valor digitado e sim a cada tempo para
+          melhorar a performance
+        </p>
+        <p>
+          <b>Formulários: Data Driven:Validação Assíncrona - Aula 111 </b>
+        </p>
+      </section>
     </section>
   </body>
 </html>

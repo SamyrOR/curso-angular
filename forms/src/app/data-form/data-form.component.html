@@ -23,6 +23,41 @@
         formControlName="email"
       />
       <div class="invalid-feedback">O Email é obrigatório</div>
+      <div
+        *ngIf="formulario.get('email').status === 'PENDING'"
+        class="invalid-feedback"
+      >
+        Validando o e-mail
+      </div>
+      <div
+        *ngIf="formulario.get('email').status === 'VALID'"
+        class="invalid-feedback"
+      >
+        O Email é válido!
+      </div>
+      <div
+        *ngIf="aplicaValidacao('email', 'emailInvalido')"
+        class="invalid-feedback"
+      >
+        Email já cadastrado
+      </div>
+    </div>
+    <div class="form-group col-12">
+      <label for="confirmarEmail">Confirmar Email</label>
+      <input
+        [ngClass]="aplicaCssErro('confirmarEmail')"
+        type="email"
+        class="form-control"
+        id="nome"
+        placeholder="email@email.com"
+        formControlName="confirmarEmail"
+      />
+      <div
+        *ngIf="aplicaValidacao('confirmarEmail', 'equalsTo')"
+        class="invalid-feedback"
+      >
+        Os campos não estão iguais
+      </div>
     </div>
     <div formGroupName="endereco" class="form-row">
       <div class="form-group col-3">
@@ -35,7 +70,18 @@
           formControlName="cep"
           (blur)="consultaCEP()"
         />
-        <div class="invalid-feedback">O CEP é obrigatório</div>
+        <div
+          *ngIf="aplicaValidacao('endereco.cep', 'required')"
+          class="invalid-feedback"
+        >
+          O CEP é obrigatório
+        </div>
+        <div
+          *ngIf="aplicaValidacao('endereco.cep', 'cepInvalido')"
+          class="invalid-feedback"
+        >
+          O CEP é invalido
+        </div>
       </div>
       <div class="form-group col-3">
         <label for="numero">Número</label>

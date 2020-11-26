@@ -1,5 +1,13 @@
 <form [formGroup]="formulario" class="mt-5" (ngSubmit)="onSubmit()">
   <div class="form-row">
+    <app-input-field
+      class="col-sm-12"
+      [classeCss]="aplicaCssErro('nome')"
+      id="nome"
+      label="Nome"
+      [control]="getCampo('nome')"
+    >
+    </app-input-field>
     <div class="form-group col-12">
       <label for="nome">Nome</label>
       <input
@@ -10,7 +18,7 @@
         placeholder="Nome"
         formControlName="nome"
       />
-      <div class="invalid-feedback">O Nome é obrigatório</div>
+      <app-error-msg [control]="getCampo('nome')" label="Nome"></app-error-msg>
     </div>
     <div class="form-group col-12">
       <label for="email">Email</label>
@@ -68,7 +76,6 @@
           class="form-control"
           id="cep"
           formControlName="cep"
-          (blur)="consultaCEP()"
         />
         <div
           *ngIf="aplicaValidacao('endereco.cep', 'required')"

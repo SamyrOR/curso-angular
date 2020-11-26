@@ -8,8 +8,8 @@ import {
   FormArray,
 } from '@angular/forms';
 
-import { Observable } from 'rxjs';
-import { map } from 'rxjs/operators';
+import { empty, Observable } from 'rxjs';
+import { distinctUntilChanged, map, switchMap } from 'rxjs/operators';
 
 import { FormValidations } from '../shared/form-validations';
 import { EstadoBr } from '../shared/models/estado-br';
@@ -79,6 +79,17 @@ export class DataFormComponent implements OnInit {
     this.cargos = this.dropDown.getCargos();
     this.tecnologias = this.dropDown.getTecs();
     this.newsletterOpt = this.dropDown.getNewsletter();
+    this.formulario
+      .get('endereco.cep')
+      .statusChanges.pipe(
+        distinctUntilChanged(),
+        switchMap((status) =>
+          status === 'VALID'
+            ? this.cepService.consultaCEP(this.getCampo('endereco.cep').value)
+            : empty()
+        )
+      )
+      .subscribe((dados) => (dados ? this.populaDadosForm(dados) : {}));
     // this.verificaEmailService.verificarEmail('email@email.com').subscribe();
   }
 

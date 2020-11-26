@@ -2125,6 +2125,45 @@
           <b>Formulários: Data Driven:Validação Assíncrona - Aula 111 </b>
         </p>
       </section>
+      <hr />
+      <section>
+        <h1>Serviços de Mensagens de Erros</h1>
+        <p>
+          Podemos criar um serviço de mensagem que retorna o erro e o campo,
+          para isso, criamos o servico que recebe o nome do campo, o validador
+          do campo e o valor da validação como opcional, retornando a mensagem
+          de erro de acordo com o tipo de erro, dentro do component que irá
+          apresentar as mensagens recebemos com input property o control do form
+          e o nome da label, criamos um metodo para a validação que retorna o
+          nosso serviço, dentro do metodo iteramos sobre os erros do control e
+          caso o campo tenha erro e foi tocado, ira reotrnar o serviço com as
+          informações do campo
+        </p>
+        <p>Tornando assim a nossa iteração de erros muito mais dinamica</p>
+        <p>
+          <b
+            >Formulários: Data Driven: Serviço de Mensagens de Erros - Aula 112
+          </b>
+        </p>
+      </section>
+      <hr />
+      <section>
+        <h1>Reagindo a mudanças reatiamente</h1>
+        <p>
+          Podemos com formulários reativos reagira mudanças de forma dinamica,
+          nos conroles, temos opções como <b>valueChanges</b> e
+          <b>statusChange</b>, que nos alerta se o valor ou estado do campo do
+          formulário mudar, e de acordo com a mudança utilizar operadores do
+          <b>rxjs</b> como observables para itergair e criar a lógica do nosso
+          código.
+        </p>
+        <p>
+          <b
+            >Formulários: Data Driven: Reagindo à mudanças reativamente - Aula
+            113
+          </b>
+        </p>
+      </section>
     </section>
   </body>
 </html>

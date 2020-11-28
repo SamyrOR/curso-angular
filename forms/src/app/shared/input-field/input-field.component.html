@@ -6,6 +6,8 @@
     class="form-control"
     [id]="id"
     [placeholder]="label"
+    [readonly]="!!isReadOnly"
+    [(ngModel)]="value"
   />
   <app-error-msg [control]="control" [label]="label"></app-error-msg>
 </div>

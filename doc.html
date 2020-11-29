@@ -2164,6 +2164,85 @@
           </b>
         </p>
       </section>
+      <hr />
+      <section>
+        <h1>Campo Input customizado</h1>
+        <p>
+          Podemos criar qualquer tipo de campo input com inputs customizados,
+          para isso implementamos a interface <b>ControlValueAccessor</b> no
+          novo component, e os métodos
+        </p>
+        <p><b>writeValue</b> atribui valor ao input</p>
+        <p><b>registerOnChange</b> executa quando mudar o campor</p>
+        <p><b>registerOnTouched</b> executa quando o campo</p>
+        <p><b>setDisabledState?</b>setar se for read onlu</p>
+        <p>
+          Adicionamos os metedos <b>get</b> e o <b>set</b> sobre o <b>value</b>
+        </p>
+        <p>
+          E para que funcione como input, adicionamos no component o
+          <b>providers</b> passando um objeto que criamos com o
+          <b
+            >const INPUT_FIELD_VALUE_ACCESSOR: any = { provide:
+            NG_VALUE_ACCESSOR, useExisting: forwardRef(() =>
+            InputFieldComponent), multi: true };</b
+          >
+        </p>
+        <p>
+          <b>Formulários: Data Driven: Campo input personalizado - Aula 114 </b>
+        </p>
+      </section>
+      <hr />
+      <section>
+        <h1>Herança no angular</h1>
+        <p>
+          Com o typescript do angular podemos criar classes abstratas, que tem
+          metodos, e metodos abstratos, e tambem metodos comuns, e ao ser
+          extendida, a classe que exetende tem acesso a todos os metodos da
+          classe pai.
+        </p>
+        <p>
+          <b>Formulários: Data Driven: Classe base para Forms - Aula 115 </b>
+        </p>
+      </section>
+      <hr />
+    </section>
+    <hr />
+    <hr />
+    <section>
+      <h1>HTTP / HTTP Client</h1>
+      <p>
+        As <b>requisições ajax</b>, é como como podemos consumir uma API rest,
+        com os verbos HTTP
+      </p>
+      <p><b>GET</b> retorna os dados da url</p>
+      <p><b>POST</b> adiciona dados através da url</p>
+      <p><b>PUT</b> modifica os dados de um item</p>
+      <p><b>DELET</b> apaga os dados através da URL</p>
+      <p>
+        <b>HTTP: Http / HttpClient: Introduçãos - Aula 117 </b>
+      </p>
+      <hr />
+      <section>
+        <h1>Simulando servdor REST</h1>
+        <p>
+          Com o <b>json-server</b>, uma biblioteca que simula um servidor REST,
+          podemos trabalhar com o front end enquanto não temos um back end
+        </p>
+        <p>
+          Basta instalar <b>npm sudo install -g json-server</b> crirar um
+          aqruivo <b>db.json</b> em qualuer lugar do projeto e iniciar com
+          <b>json-server --watch db.json</b>, ele rodará e simulará um servidor
+          REST
+        </p>
+        <p>
+          <b>HTTP: Simulando servidor REST (json-server) - Aula 119 </b>
+        </p>
+      </section>
+      <hr />
+      <section>
+        <h1></h1>
+      </section>
     </section>
   </body>
 </html>

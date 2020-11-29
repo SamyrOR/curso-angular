@@ -44,7 +44,7 @@ export class DropdownService {
   getCidades(idEstado: number) {
     return this.http.get<Cidade[]>('assets/dados/cidades.json').pipe(
       map((cidades: Cidade[]) => {
-        cidades.filter((c) => c.estado === idEstado);
+        cidades.filter((c: Cidade) => c.estado === idEstado);
       })
     );
   }

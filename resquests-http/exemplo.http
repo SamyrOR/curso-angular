@@ -1,0 +1,5 @@
+http://localhost:3000/cursos
+
+###
+
+DELETE http://localhost:3000/cursos/3

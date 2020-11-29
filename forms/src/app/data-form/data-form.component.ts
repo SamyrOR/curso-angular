@@ -91,9 +91,10 @@ export class DataFormComponent extends BaseFormComponent implements OnInit {
       )
       .subscribe((dados) => (dados ? this.populaDadosForm(dados) : {}));
     // this.verificaEmailService.verificarEmail('email@email.com').subscribe();
-    this.getCampo('endereco.estado')
+    this.formulario
+      .get('endereco.estado')
       .valueChanges.pipe(
-        tap((estado) => console.log('Novo estado', estado)),
+        tap((estado) => console.log('Novo estado: ', estado)),
         map((estado) => this.estados.filter((e) => e.sigla === estado)),
         map((estados) =>
           estados && estados.length > 0 ? estados[0].id : empty()

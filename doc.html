@@ -2241,6 +2241,133 @@
       </section>
       <hr />
       <section>
+        <h1>Http GET</h1>
+        <p>
+          Para listar items, devemos fazer a requisição ajax via o HttpClient,
+          injetado dentro de um serviço, lá criamos o motodo de
+          <b>list()</b> que irá listar capturar o nosso objeto, fazemos o
+          <b>this.http.get(linkApi)</b>, e tambem podemos criar uma interface
+          para tipar o tipo de item que vamos receber, adicionamos a interface
+          logo após o get <b>.get< Interface ></b>
+        </p>
+        <p>
+          Após criar o metodo no serviço, dentro do component que irá consumir,
+          criamos um atributo que irá receber os dados e injetamos o serviço, e
+          dentro do <b>NgOnInit</b> utilizamos o metodo criado dentro do serviço
+          e aplicamos o <b>.subscribe()</b> para que possamos capturaro item.
+        </p>
+        <p>
+          <b>HTTP: GET listar registros - Aula 120 </b>
+        </p>
+      </section>
+      <hr />
+      <section>
+        <h1>Pipe Async</h1>
+        <p>
+          Podemos tambem ao invés de realizar o subscribe, criar um atributo com
+          o tipo do retorno da resqusição <b>Observable < Interface ></b>, e
+          criamos a váriavel com o <b>$</b> no final para identifarmos que se
+          trata de um observable, e dentro do <b>ngOnInit</b> este atributo irá
+          receber o servico com o metodo de requisição, sem precisar do
+          <b>subscribe</b>
+        </p>
+        <p>
+          Dentro do component podemos criar um <b>*ngIf</b> para somente exibir
+          os dados quando a váriavel estiver disponivel, e para isso dentro do
+          if podemos adicionar o <b> | async</b> que realiza o subscribe de
+          forma automatica.
+        </p>
+        <p>
+          Podemos criar um <b>ng-template</b> para exbir algum dado enquanto
+          carrega os dados, criamos o ng-template com alguma variável local com
+          <b>#loading</b>, e no <b>*ngIf</b>, adicionamos o
+          <b>else</b> informando a váriavel de template criada.
+        </p>
+        <p>
+          Recomendado utilizar o <b> | async</b> sempre que possível pois fica a
+          cargo do proprio angular o subscribe e o unsusbcribe
+        </p>
+        <p>Exemplo: <b> *ngIf="cursos$ | async as cursos; else loading"</b></p>
+        <p>
+          <b>HTTP: GET + Pipe Async - Aula 122 </b>
+        </p>
+      </section>
+      <hr />
+      <section>
+        <h1>Unsubscribe Automático</h1>
+        <p>
+          Sempre que tivermos um subscribe em um component, devemos sempre fazer
+          o <b>unsubscribe</b>, pois se não realizarmos podemos ter problemas
+          com <b>vazamento de memória</b>, pois mesmo que o component seja
+          destruido, ele escuta o subscribe, para realizar o procedimento ,
+          temos o pipe async <b>| async</b>, que realiza o unsubscribe
+          automatico.
+        </p>
+        <p>
+          <b>takeUntil(Observable) </b>que vai manter o subscribe até um
+          observable passado como parâmetro ser emitido, para isso criamos um
+          observable e no life clicle, do <b>ngOnDestroy</b> emitimos um evento
+        </p>
+        <p>
+          <b>take(1)</b> realiza a requisição apenas o numero de vezes
+          informado, após isso, é encerrado.
+        </p>
+        <p>
+          E tambem o subscribe manual, onde criamos um atributo que é um
+          <b>Subscription</b> e atribuimos a ele a nossa requisição e dentro do
+          <b>ngOnDestroy</b> escrevemos que devemos dar o unsubscribe,
+          <b>minhaSub.unsubscribe()</b>
+        </p>
+        <p>
+          <b>HTTP: Unsubscribe automatico - Aula 123 </b>
+        </p>
+      </section>
+      <hr />
+      <section>
+        <h1>Capturando erros</h1>
+        <p>
+          Para capturar erros no angular, podemos com o <b>rxjs</b> dentro do
+          método <b>.pipe()</b> logo após tuilizar o metodo de requisição, e
+          dentro do pipe utilizar o método
+          <b>catchError(error => { fazer algo com o error} </b>, assim
+          capturamos o mesmo, e este metodo pode retornar um objservable
+        </p>
+        <p>
+          Podemos tambem capturar o erro direto no subscribe, no segundo
+          parametro e informar a lógica.
+        </p>
+        <p>
+          Para que seja possível mostrar o erro na tela, criamos um atributo
+          <b>error$</b> que é um observable com <b>new Subject< tipo >() </b>,
+          passamos o tipo, e dentro do <b>catchError()</b> damos um
+          <b>.next(true)</b> para emitir um valor que deu erro, e no template
+          usamos o <b>*ngIf</b> com o pipe async da váriavel de error
+        </p>
+        <p>
+          <b>HTTP: Capturando Erros (+Erro com async) - Aula 124 </b>
+        </p>
+      </section>
+      <hr />
+      <section>
+        <h1>Alerta de Erro</h1>
+        <p>
+          Para criarmos alertas de erros, realizamos o procedimento de acordo
+          com o framework CSS que estamos utilizando, mas independente de qual
+          seja, devemos realizar os imports do module e do service
+        </p>
+        <p>No geral criamos component para servir como modal.</p>
+        <p>
+          E tambem podemos criar um serviço genérico para os alerts, fazendo om
+          que escolhamos a mensagem e o tipo de alera.
+        </p>
+        <p>
+          <b
+            >HTTP: Alerta de Erro && Serviço de alerta genérico - Aula 125~126
+          </b>
+        </p>
+      </section>
+      <hr />
+      <section>
         <h1></h1>
       </section>
     </section>

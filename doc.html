@@ -2368,7 +2368,48 @@
       </section>
       <hr />
       <section>
-        <h1></h1>
+        <h1>POST</h1>
+        <p>
+          Através do metodo <b>POST</b>, conseguimos adicionar valores a nossa
+          api, para isso, com o nosso metodo HTTP conseguimos dar um
+          <b>.post(url.da.api)</b> passando a url da api, criando um método
+          assim, basta chama-lo no component que vai consumir, muito usado em
+          metodos de submit, mas para que ocorra o processo, não podemos
+          esquecer o
+          <b
+            >subscribe(sucesso => lógica para sucesso, error => lógica para
+            error)</b
+          >,
+        </p>
+        <p>
+          <b>HTTP: POST Criando Cursos - 128 </b>
+        </p>
+      </section>
+      <hr />
+      <section>
+        <h1>Criando edição</h1>
+        <p>
+          Para criar o <b>Update</b> do <b>CRUD</b>, criar um metodo no servioce
+          que de o <b>get</b> no item selecionado, e dentro do component podemos
+          criar um metodo para pegar os params da rota ativa
+          <b>this.route.params .pipe</b> e através do pipe, adicionar os
+          operadores para aninhar observables, o mais usado é o
+          <b>switchMap()</b>, que retorna outro observable e nele criamos edição
+          do formulario.
+        </p>
+        <p><b>switchMap</b>substitui a ultima requisição</p>
+        <p><b>concatMap</b> ordem da requisição importa, será feito em ordem</p>
+        <p>
+          <b>mergeMap</b> ordem não importa, realiza as requsições em ordem
+          aleatoria
+        </p>
+        <p>
+          <b>exhaustMap</b> utilizada em casos de logim, realiza e espera a
+          resposta das requisições
+        </p>
+        <p>
+          <b>HTTP: Editando Cursos e Observables aninhados - Aula 129 </b>
+        </p>
       </section>
     </section>
   </body>

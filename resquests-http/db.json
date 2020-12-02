@@ -7,6 +7,26 @@
     {
       "nome": "HTML5",
       "id": 2
+    },
+    {
+      "nome": "CSS3",
+      "id": 3
+    },
+    {
+      "nome": "Java Script",
+      "id": 4
+    },
+    {
+      "nome": "Type Script",
+      "id": 5
+    },
+    {
+      "nome": "Ruby",
+      "id": 6
+    },
+    {
+      "nome": "Java",
+      "id": 7
     }
   ]
 }

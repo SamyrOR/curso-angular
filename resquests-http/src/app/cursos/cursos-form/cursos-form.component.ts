@@ -25,16 +25,17 @@ export class CursosFormComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    this.route.params
-      .pipe(
-        map((params: any) => params['id']),
-        switchMap((id: number) => this.cursosService.loadByID(id))
-      )
-      .subscribe((curso) => this.updateForm(curso));
+    // this.route.params
+    //   .pipe(
+    //     map((params: any) => params['id']),
+    //     switchMap((id: number) => this.cursosService.loadByID(id))
+    //   )
+    //   .subscribe((curso) => this.updateForm(curso));
+    const curso = this.route.snapshot.data['curso'];
     this.form = this.formBuilder.group({
-      id: [null],
+      id: [curso.id],
       nome: [
-        null,
+        curso.nome,
         [
           Validators.required,
           Validators.minLength(3),
@@ -44,12 +45,12 @@ export class CursosFormComponent implements OnInit {
     });
   }
 
-  updateForm(curso: Curso) {
-    this.form.patchValue({
-      id: curso.id,
-      nome: curso.nome,
-    });
-  }
+  // updateForm(curso: Curso) {
+  //   this.form.patchValue({
+  //     id: curso.id,
+  //     nome: curso.nome,
+  //   });
+  // }
 
   hasError(field: string) {
     return this.form.get(field)?.errors;
@@ -57,17 +58,45 @@ export class CursosFormComponent implements OnInit {
   onSubmit() {
     this.submitted = true;
     if (this.form.valid) {
-      console.log('submit');
-      this.cursosService.create(this.form.value).subscribe(
+      let msgSuccess = 'Curso adicionado com sucesso';
+      let msgError =
+        'O curso não foi inserido, por favor tente novamente mais tarde';
+      if (this.form.value.id) {
+        msgSuccess = 'Curso atualizado com sucesso';
+        msgError =
+          'Erro ao atualizar o curso, por favor tente novamente mais tarde';
+      }
+      this.cursosService.save(this.form.value).subscribe(
         (success) => {
-          this.modal.showAlertSuccess('Curso adicionado com sucesso'),
-            this.location.back();
+          this.modal.showAlertSuccess(msgSuccess), this.location.back();
         },
-        (error) =>
-          this.modal.showAlertDanger(
-            'O curso não foi inserido, por favor tente novamente mais tarde'
-          )
+        (error) => {
+          this.modal.showAlertDanger(msgError);
+        }
       );
+      // if (this.form.value.id) {
+      //   this.cursosService.update(this.form.value).subscribe(
+      //     (success) => {
+      //       this.modal.showAlertSuccess('Curso atualizado com sucesso'),
+      //         this.location.back();
+      //     },
+      //     (error) =>
+      //       this.modal.showAlertDanger(
+      //         'Erro ao atualizar o curso, por favor tente novamente mais tarde'
+      //       )
+      //   );
+      // } else {
+      //   this.cursosService.create(this.form.value).subscribe(
+      //     (success) => {
+      //       this.modal.showAlertSuccess('Curso adicionado com sucesso'),
+      //         this.location.back();
+      //     },
+      //     (error) =>
+      //       this.modal.showAlertDanger(
+      //         'O curso não foi inserido, por favor tente novamente mais tarde'
+      //       )
+      //   );
+      // }
     }
   }
   onCancel() {

@@ -6,6 +6,7 @@ import { catchError, take, switchMap } from 'rxjs/operators';
 import { Curso } from 'src/app/models/curso';
 import { AlertModalService } from 'src/app/shared/alert-modal.service';
 import { CursosService } from '../cursos.service';
+import { Cursos2Service } from '../cursos2.service';
 
 @Component({
   selector: 'app-cursos-lista',
@@ -20,7 +21,7 @@ export class CursosListaComponent implements OnInit {
   @ViewChild('deleteModal') deleteModal: any;
   cursoSelected: Curso = { id: null, nome: null };
   constructor(
-    private cursosService: CursosService,
+    private cursosService: Cursos2Service,
     private modalService: BsModalService,
     private alertService: AlertModalService,
     private router: Router,
@@ -39,7 +40,7 @@ export class CursosListaComponent implements OnInit {
         //this.error$.next(true);
         this.handleError();
         console.error(error);
-        return empty();
+        return EMPTY;
       })
     );
   }

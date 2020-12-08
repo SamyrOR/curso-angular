@@ -15,20 +15,20 @@ export class CrudService<T> {
     return this.http.post(this.API_URL, record).pipe(take(1));
   }
 
-  private update(record: T) {
+  private update(record: any) {
     return this.http
       .put<T>(`${this.API_URL}/${record['id']}`, record)
       .pipe(take(1));
   }
 
-  save(record: T) {
+  save(record: any) {
     if (record['id']) {
       return this.update(record);
     }
     return this.create(record);
   }
 
-  remove(id: T['id']) {
+  remove(id: any) {
     return this.http.delete<T>(`${this.API_URL}/${id}`).pipe(take(1));
   }
 }

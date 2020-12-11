@@ -2443,6 +2443,59 @@
           <b>HTTP: PUT Atualizando Cursos - Aula 131 </b>
         </p>
       </section>
+      <hr />
+      <section>
+        <h1>Pop up de confirmação</h1>
+        <p>
+          Para o metodo <b>delete</b> podemos e devemos criar um pop up que
+          questiona a confirmação da exclusão daquele dado, para isso no
+          component, dependendo do nosso framework css, criamos uma referencia
+          do modal, e invocamos o servico para criação do modal, passando a
+          mensagem que está no template, com uma váriavel de template, e para
+          acessa-lo dentro do component usamos o decorator
+          <b>@ViewChild(noma-da-variavel) nome-da-variavel</b>
+        </p>
+        <p>
+          Após a criação do modal, criamos as lógicas dos botoes de aceite e
+          delete que serão outros dois métodos com respectivas lógicas, para
+          excluir o arquivo, mandamos a requisisção de
+          <b>http.delete(caminho/url)</b>, e será excluido do nosso servidor
+        </p>
+        <p>
+          Podemos tambem criar um component que é responsável por um popup
+          genérico, que será personalizavel ccom a invocação, para isso usamos
+          <b>@Input</b> property, e para retornar caso o botão de sim seja
+          clicado, podemos criar uma variável do tipo <b>Subject< tipo></b>, e
+          no <b>ngOnInit()</b> atribuimos um <b>new Subject()</b> para a
+          variável, e criamos um método que e escutamos o evento de click, ao
+          ser clicado, a variável com <b>Subject</b> emite um valor,
+          <b>variavel.next(valor)</b>
+        </p>
+        <p>
+          No component que estará consumindo o modal genérico podemos ouvir,
+          criamos uma variável que recebe o método de invocação do modal, e em
+          seguida utilizar o <b>vairval.asObservable()</b> que teremos acesso a
+          todos os métodos de um observable
+        </p>
+        <p>
+          <b>HTTP: Popup de Confirmação para remover Cursos - Aula 132~133 </b>
+        </p>
+      </section>
+      <hr />
+      <section>
+        <h1>Serviço genérico de CRUD</h1>
+        <p>
+          Caso nossa aplicação precise de mais de um serviço de <b>CRUD</b>,
+          podemos criar um serviço genérico usando a tipagem generica
+          <b>CrudService< T > </b>, e ao invocar o servico passando a classe que
+          queremos iterar, e dentro do serviço genérico terá todas as
+          funcionalidades básicas do <b>CRUD</b>, caso desejamos alterar,
+          podemos extender a classe e sobrescrever os métodos
+        </p>
+        <p>
+          <b>HTTP: Serviço Genérico de CRUD - Aula 134 </b>
+        </p>
+      </section>
     </section>
   </body>
 </html>

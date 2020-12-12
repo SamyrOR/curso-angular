@@ -2496,6 +2496,82 @@
           <b>HTTP: Serviço Genérico de CRUD - Aula 134 </b>
         </p>
       </section>
+      <hr />
+      <section>
+        <h1>Formulário de Upload</h1>
+        <p>
+          Para criar um formulário para upload de arquivos podemos com o nosso
+          framework mesmo realizar o procedimento.
+        </p>
+        <p>
+          Para chegar no valor do elemento, podemos escutar o evento
+          <b>onChange</b> no input de files, e recebemos se for mais de um
+          arquivo um array de files em <b>event.srcElement.files</b>
+        </p>
+        <p>Dica: Sempre evitar uso de bibliotecas desnecessárias.</p>
+        <p>
+          <b
+            >HTTP: Upload de Arquivo: Formulário Upload com Bootstrap 4 - Aula
+            135
+          </b>
+        </p>
+      </section>
+      <hr />
+      <section>
+        <h1>Back end do upload</h1>
+        <p>
+          Quando vamos fazer upload de arquivos, nosso código back end, vai
+          dependenr da linguagem, e com o node em desenvolvimento, devemos
+          utilizar a biblioteca <b>Cors</b>, que nos permite evitar erro com o
+          uso de javascript com cors, rodando os servidores do front e back end
+          ao mesmo tempo e realizando requisições
+        </p>
+        <p>
+          Temos tambem que utilizar middlewares como <b>multipart</b> ou
+          <b>formidable</b>
+        </p>
+        <p>
+          <b
+            >HTTP: Http: Upload de Arquivo: Back-end com Node.js" - Aula
+            136
+          </b>
+        </p>
+      </section>
+      <hr />
+      <section>
+        <h1>Request com FormData</h1>
+        <p>
+          Para capturar os arquivos e enviar para o servidor back end, podemos
+          declarar uma variável do tipo
+          <b
+            >Set< File >, que não permite items duplicados ao contrário do
+            array, e para adicionar um arquvio basta usar o método
+            <b>this.files.add(valor)</b></b
+          >
+        </p>
+        <p>
+          Para realizar o upload, criamos um service com o metodo, que vai
+          receber como parâmetro os arquivos como <b>Set< File > </b> e como
+          segundo parâmetro a url como string, ficando
+          <b>upload(files: Set< File >, url: string) </b>
+        </p>
+        <p>
+          Além dos metodos que consta no <b>HttpClient</b> como
+          <b>GET, POST, PUT, e DELETE </b>, podemos com o Angular criar request
+          personalizado, para isso atribuimos a uma variável a classe
+          <b>new HttpRequest()</b>, passando como parâmetro o método, a url e
+          body ou cabeçalho do request
+          <b>new HttpRequest('POST', url, formData)</b>, sendo o
+          <b>formData</b>, uma variável que instancia o <b>new FormData()</b>,
+          responsável pelo corpo da request, para adicionar os arquivos no
+          formData, usamos o metodo append passando o nome do campo, o blob do
+          arquivo, e em caso de arquivos o nome.
+          <b>formData.append('file', file, file.name')</b>
+        </p>
+        <p>
+          <b>HTTP: Http Upload de Arquivo: Request com FormData - Aula 137 </b>
+        </p>
+      </section>
     </section>
   </body>
 </html>

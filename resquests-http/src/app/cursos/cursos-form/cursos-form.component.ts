@@ -4,7 +4,6 @@ import { ActivatedRoute } from '@angular/router';
 import { Location } from '@angular/common';
 
 import { AlertModalService } from 'src/app/shared/alert-modal.service';
-import { CursosService } from '../cursos.service';
 import { Cursos2Service } from '../cursos2.service';
 
 @Component({

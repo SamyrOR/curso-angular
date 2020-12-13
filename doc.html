@@ -2532,8 +2532,7 @@
         </p>
         <p>
           <b
-            >HTTP: Http: Upload de Arquivo: Back-end com Node.js" - Aula
-            136
+            >HTTP: Http: Upload de Arquivo: Back-end com Node.js" - Aula 136
           </b>
         </p>
       </section>
@@ -2570,6 +2569,74 @@
         </p>
         <p>
           <b>HTTP: Http Upload de Arquivo: Request com FormData - Aula 137 </b>
+        </p>
+      </section>
+      <hr />
+      <section>
+        <h1>Angular Proxy</h1>
+        <p>
+          Quando desenvolvento o back e o front end no mesmo ambiente, para
+          evitar o uso do <b>cors</b> podemos utilizar o angular proxy, criamos
+          na pasta raiz do projeto o <b>proxy.conf.js</b>, nele criamos uma
+          const, que ao ser navegado a tal url, o proprio proxy se encarrega de
+          navegar até a url informada
+        </p>
+        <code
+          >const PROXY_CONFIG = [ { context: ["/api"], target:
+          "http://localhost:8000", secure: false, logLevel: "debug",
+          pathRewrite: { "^/api": "" }, }, ]; module.exports = PROXY_CONFIG;
+        </code>
+        <p>
+          Onde passamos um array com um objeto tendo o <b>context</b> que
+          representa quando o proxy será acionado, o <b>target</b>, qual a url
+          será o alvo, <b>secure</b> tru ou false, true para <b>https</b>,
+          <b>logLevel</b> para informações de debug, e <b>pathRewrite</b> mais
+          usada quando trabalhamos com api com rotas já criadas sem o nosso
+          <b>/api</b>, então sobrescrevemos a url e retiramos o código
+          <b>api</b> via regex
+        </p>
+        <p>
+          <b>HTTP: Removendo CORS com Angular Proxy - Aula 138 </b>
+        </p>
+      </section>
+      <hr />
+      <section>
+        <h1>Observando eventos Http</h1>
+        <p>
+          Para criar uma barra de progressso por exemplo, temos como observar
+          eventos do Http, dentro do serviço que realiza a requisição, no
+          <b>POST</b>, como terceiro parametro podemos passar um objeto com
+          configurações para obervar eventos.
+        </p>
+        <p>
+          <code><b>{ observe: 'events', reportProgress: true, })</b></code>
+        </p>
+        <p>
+          Podendo ser adicionado outros eventos para rastreio, e dentro do
+          component como response do subscribe, obtemos o http event, que
+          tipamos como <b>HttpEvent</b> então conseguimos todas as iterações
+          sobre o evento http e o seu tipo.
+        </p>
+        <p>
+          <b
+            >HTTP: Upload Arquivo: Barra de Progresso + Observando Eventos Http
+            - Aula 139
+          </b>
+        </p>
+      </section>
+      <hr />
+      <section>
+        <h1>Operador RxJS Customizado</h1>
+        <p>
+          Consguimos criar operadores RxJs customizados, criando um novo
+          arquivos, por convenção na pasta de <b>shared</b>, e dentro do arquivo
+          criamos funções que podem ser exportadas com o tipo generico
+          <b>export function exemplo< T > () {return pipe (lógica)} </b>,
+          utilizando o pipe e os próprios operadores do rxJs para criar o nosso
+          operador customizado.
+        </p>
+        <p>
+          <b>HTTP: Criando operador RxJS customizado - Aula 140 </b>
         </p>
       </section>
     </section>

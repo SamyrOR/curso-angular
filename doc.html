@@ -2639,6 +2639,76 @@
           <b>HTTP: Criando operador RxJS customizado - Aula 140 </b>
         </p>
       </section>
+      <hr />
+      <section>
+        <h1>Download de arquivos Angular</h1>
+        <p>
+          Para realizar downloads de arquivos, recebemos da nossa api o response
+          com o respectivo arquivo, e no nosso serviço, dentro do subscribe
+          criamos um uma variável com blob recebendo a url com
+        </p>
+        <code> <b>const blob = window.URL.createObjectURL(file)</b> </code>
+        <p>
+          E tambem devemos criar uma elemento <b>a</b>, adicionar o href o blob
+          com o link, criado e forçar um click com <b>link.click()</b>, depois
+          removemos o link do blobl <b>window.URL.revokeObjectURL(blob)</b>, e
+          removemos o link <b>link.remove</b>.
+        </p>
+        <p>
+          <b>HTTP:Download de Arquivo - Aula 141 </b>
+        </p>
+      </section>
+      <hr />
+      <section>
+        <h1>HttpParams</h1>
+        <p>
+          Para fazer pesquisas em URLs de APIs, temos e devemos que usar
+          parâmetros de forma dinâmica com o nosso usuário, e na requisição,
+          passamos os parametros com
+        </p>
+        <code><b>const params = {search: value, fields: fields}</b></code>
+        <p>
+          Um objeto com o nome <b>params</b>, e o campo e o valor referente ao
+          parâmetro,ou tambem usando instânciando a classe <b>HttpParams()</b> e
+          setando os campos e valores
+        </p>
+        <code
+          ><b
+            >let params = new HttpParams(); params = params.set('search',
+            value); params = params.set('fields', fields')</b
+          ></code
+        >
+        <p>
+          E passamos para a requisição como parâmetro a variável que carrega os
+          params, <b>this.http.get(url, {params})</b>
+        </p>
+        <p>
+          <b>HTTP: Passando Parâmetros na URL (HttpParams) - Aula 143 </b>
+        </p>
+      </section>
+      <hr />
+      <section>
+        <h1>Pesquisa reativa</h1>
+        <p>
+          Para fazer uma pesquisa reativa com o angular, aquele tipo de pesquisa
+          que é realizada enquanto digitamos o valor, usamos diversos operadores
+          do rxjs, começamos com o observable de mudança do valor do form
+          <b>campo.valueChanges.pipe()</b> dentro do pipe, vamos usar o
+          <b>map</b> para realizar o <b>.trim()</b> removendo qualquer espaço em
+          branco do valor da busca <b>map((value) => value.trim()),</b>, em
+          seguida, fazemos o filtro do valor para que seja realizado a
+          requisição apenas com uma certa quantidade de caracteres
+          <b>filter((value) => value.length > 1),</b>, usamos tambem o
+          <b>debounceTime(300),</b> para realizar a requisição apenas após algum
+          tempo de digitação, evitando requisição a cada letra e espera apenas
+          após algumas palavras formadas, e tambem para evitar que seja
+          realizado requisições com o mesmo valor usamos o
+          <b>distinctUntilChanged(),</b> e por ultimo utilizamos o <b>switchMap()</b> para usar observables aninhados e realizar a requisição.
+        </p>
+        <p>
+          <b>HTTP: Pesquisa/Busca com Programação Reativa - Aula 144 </b>
+        </p>
+      </section>
     </section>
   </body>
 </html>

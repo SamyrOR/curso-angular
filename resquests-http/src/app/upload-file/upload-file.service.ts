@@ -15,4 +15,8 @@ export class UploadFileService {
       reportProgress: true,
     });
   }
+
+  donwload(url: string) {
+    return this.http.get(url, { responseType: 'blob' as 'json' });
+  }
 }

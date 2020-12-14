@@ -35,7 +35,7 @@ export class UploadFileComponent implements OnInit {
       fileNames.push(selectdFiles[i].name);
       this.files.add(selectdFiles[i]);
     }
-    document.querySelector('.custom-file-label')?.innerHTML = fileNames.join(
+    document.querySelector('.custom-file-label').innerHTML = fileNames.join(
       ', '
     );
     this.progress = 0;
@@ -83,4 +83,37 @@ export class UploadFileComponent implements OnInit {
         );
     }
   }
+
+  onDownloadExcel() {
+    this.service.donwload('/api/downloadExcel').subscribe((res: any) => {
+      const file = new Blob([res], {
+        type: res.type,
+      });
+      //IE
+      if (window.navigator && window.navigator.msSaveOrOpenBlob) {
+        window.navigator.msSaveOrOpenBlob(file);
+        return;
+      }
+      const blob = window.URL.createObjectURL(file);
+
+      const link = document.createElement('a');
+      link.href = blob;
+      link.download = 'report.xlsx';
+      //link.click();
+      link.dispatchEvent(
+        new MouseEvent('click', {
+          bubbles: true,
+          cancelable: true,
+          view: window,
+        })
+      );
+
+      setTimeout(() => {
+        window.URL.revokeObjectURL(blob);
+        link.remove();
+      }, 100);
+    });
+  }
+
+  onDownloadPDF() {}
 }

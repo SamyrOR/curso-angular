@@ -48,7 +48,7 @@ export class LibSearchComponent implements OnInit {
     //if (value && (value = value.trim() === '')) {
     const params = {
       search: value,
-      fields: fields,
+      fields: this.FIELDS,
     };
     this.results$ = this.http.get(`${this.SEARCH_URL}`, { params }).pipe(
       tap((res: any) => (this.total = res.total)),

@@ -2743,5 +2743,64 @@
         </p>
       </section>
     </section>
+    <hr />
+    <hr />
+    <section>
+      <h1>Deploy com angular</h1>
+      <section>
+        <h1>ng build --prod</h1>
+        <p>
+          Para realizar o build de produção, basta rodar o <b>npm run build</b>,
+          pois será gerado o build de produção, caso usamos as variaveis de
+          ambiente,<b> enviroments</b> temos que adicionar a flagg
+          <b>--prod</b> dentro do package.json no script de build, após isto os
+          arquivos staticos serão gerados na pasta <b>dist/meu-app</b> e caso
+          desejamos configurar os browser suportados, acessamos o arquivo
+          <b>browserslistrc</b>
+        </p>
+        <p>
+          <b
+            >Deploy: Build de Produção + Suporte ao Internet Explorer - Aula 147
+          </b>
+        </p>
+      </section>
+      <hr />
+      <section>
+        <h1>Deploy com firese</h1>
+        <p>
+          Para realizar o deploy com firebase, criamos o projeto dentro do
+          firebase, e instalamos o <b>npm install -g firebase-tools</b> de forma
+          global fazemos login com a nossa conta do g-mail, com
+          <b>firebase login</b>, aplicamos o <b>firebase init</b> e iniciamos o
+          firebase no nosso projeto, selecionamos para realizar o hosting, e
+          selecionamos o nosso projeto e a pasta de dist para subir e realizamos
+          o deploy com <b>firebase deploy</b>
+        </p>
+        <p>
+          <b>Deploy: Deploy em Produção (Firebase Hosting) - Aula 148 </b>
+        </p>
+      </section>
+      <hr />
+      <section>
+        <h1>Deploy em produção com ng deploy</h1>
+        <p>
+          Podemos realizar o build e o deploy com o <b>ng deploy</b>, para
+          podermos realizar isso, devemos adicionar com
+          <b>ng add @deploy-server</b> e após basta dar o <b>ng deploy</b> que
+          será feito o build e o deploy de forma simples.
+        </p>
+        <p>Lista de servers</p>
+        <p><b>@angular/fire</b></p>
+        <p><b>@azure/ng-deploy</b></p>
+        <p><b>@zeit/ng-deploy</b></p>
+        <p><b>@netlify-builder/deploy</b></p>
+        <p><b>angular-cli-ghpages</b></p>
+        <p><b>ngx-deploy-npm</b></p>
+        <p><b>@jefiozie/ngx-aws-deploy</b></p>
+        <p>
+          <b>Deploy: Deploy em Produção com ng deploy (Firebase) - Aula 149 </b>
+        </p>
+      </section>
+    </section>
   </body>
 </html>
